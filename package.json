@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
+    "imagetracerjs": "^1.2.6",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-ga4": "^3.0.1",
     "react-helmet-async": "^3.0.0",
     "react-router": "^7.14.2",
     "tailwindcss": "^4.2.4"

@@ -62,7 +62,7 @@ const SvgConverter: React.FC = () => {
             <Helmet>
                 <title>Free SVG to PNG Converter | High Quality | NJTools</title>
                 <meta name="description" content="Convert SVG to PNG online for free. Fast, secure, and high-quality SVG vector to PNG image conversion directly in your browser." />
-                <meta name="keywords" content="svg to png, convert svg, vector to image, free online tools, njtools" />
+                <meta name="keywords" content="svg to png, convert svg, vector to image, free online tools, njtools, Free SVG to PNG Converter, High Quality" />
                 <link rel="canonical" href="https://njtools.xyz/tools/svg-to-png" />
             </Helmet>
 

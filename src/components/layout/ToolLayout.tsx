@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router";
 
 interface IToolLayoutProps {
     children: React.ReactNode;
@@ -10,16 +11,18 @@ interface IToolLayoutProps {
 const ToolLayout: React.FC<IToolLayoutProps> = ({ children, title, description, seoContent }) => {
     const SHOW_ADS = false;
     return (
-        <div className="min-h-[86vh] max-w-400 mx-auto px-4 py-8">
+        <div className="max-w-400 mx-auto px-4 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <aside className="lg:col-span-2 space-y-6">
                     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
                         <h3 className="font-bold text-gray-800 border-b pb-2 mb-3">Categories</h3>
-                        <ul className="space-y-2 text-sm">
-                            <li className="text-blue-600 font-semibold cursor-pointer">Media</li>
-                            <li className="text-gray-600 hover:text-blue-500 cursor-pointer transition">Developer</li>
-                            <li className="text-gray-600 hover:text-blue-500 cursor-pointer transition">Utility</li>
-                        </ul>
+                        <Link to='/tools'>
+                            <ul className="space-y-2 text-sm">
+                                <li className="text-blue-600 font-semibold cursor-pointer">Media</li>
+                                <li className="text-gray-600 hover:text-blue-500 cursor-pointer transition">Developer</li>
+                                <li className="text-gray-600 hover:text-blue-500 cursor-pointer transition">Utility</li>
+                            </ul>
+                        </Link>
                     </div>
 
                     {SHOW_ADS && (
@@ -66,10 +69,10 @@ const ToolLayout: React.FC<IToolLayoutProps> = ({ children, title, description, 
 
                         <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
                             <h3 className="font-bold text-gray-800 border-b pb-2 mb-3">Popular Tools</h3>
-                            <ul className="text-sm space-y-3">
-                                <li className="text-blue-500 hover:underline cursor-pointer">JSON Formatter</li>
-                                <li className="text-blue-500 hover:underline cursor-pointer">Unit Converter</li>
-                                <li className="text-blue-500 hover:underline cursor-pointer">Password Generator</li>
+                            <ul className="text-sm space-y-4">
+                                <Link to="/tools/svg-to-png"><li className="text-blue-500 hover:underline cursor-pointer mb-2">Svg to Png</li></Link>
+                                <Link to="/tools/png-to-svg"><li className="text-blue-500 hover:underline cursor-pointer mb-2">Png to Svg</li></Link>
+                                <Link to="/tools/json-formatter"><li className="text-blue-500 hover:underline cursor-pointer mb-2">Json Formatter</li></Link>
                             </ul>
                         </div>
 
