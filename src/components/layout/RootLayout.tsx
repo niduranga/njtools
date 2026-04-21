@@ -1,6 +1,18 @@
-import { Outlet, Link } from "react-router";
+import {Outlet, Link, useNavigate, useLocation} from "react-router";
+import {useEffect} from "react";
 
 const RootLayout = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const redirectPath = params.get('p');
+        if (redirectPath) {
+            navigate(redirectPath, { replace: true });
+        }
+    }, [navigate, location]);
+
     return (
         <div className="min-h-screen bg-gray-50">
             <nav className="bg-white border-b border-gray-200 px-4 py-3">

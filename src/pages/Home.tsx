@@ -51,7 +51,7 @@ const Home: React.FC = () => {
                             {filteredTools.map((tool) => (
                                 <Link
                                     key={tool.id}
-                                    to={`/tools/${tool.id}`} // Dynamic route එකට link කරනවා
+                                    to={`/tools/${tool.id}`}
                                     className="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all"
                                 >
                                     <div className="flex items-start justify-between mb-4">

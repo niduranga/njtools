@@ -1,5 +1,6 @@
 import React, { useState, useRef, type ChangeEvent } from 'react';
 import ToolLayout from '../layout/ToolLayout';
+import {Helmet} from "react-helmet-async";
 
 const SvgConverter: React.FC = () => {
     const [status, setStatus] = useState<'idle' | 'converting' | 'done'>('idle');
@@ -58,6 +59,13 @@ const SvgConverter: React.FC = () => {
                 </>
             }
         >
+            <Helmet>
+                <title>Free SVG to PNG Converter | High Quality | NJTools</title>
+                <meta name="description" content="Convert SVG to PNG online for free. Fast, secure, and high-quality SVG vector to PNG image conversion directly in your browser." />
+                <meta name="keywords" content="svg to png, convert svg, vector to image, free online tools, njtools" />
+                <link rel="canonical" href="https://njtools.xyz/tools/svg-to-png" />
+            </Helmet>
+
             <div className="flex flex-col items-center justify-center border-2 border-dashed border-blue-200 p-10 rounded-lg bg-blue-50/30">
                 <input
                     type="file"
