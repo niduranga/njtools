@@ -7,6 +7,7 @@ import {
 import { TOOLS_CONFIG } from '../config/tools';
 
 const Home: React.FC = () => {
+    const SHOW_ADS = false;
     const [searchQuery, setSearchQuery] = useState('');
 
     const filteredTools = TOOLS_CONFIG.filter(tool =>
@@ -76,9 +77,11 @@ const Home: React.FC = () => {
                     )}
                 </div>
 
-                <div className="w-full bg-slate-200/50 h-32 rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-300 mb-16">
-                    <span className="text-slate-400 text-sm font-medium tracking-widest uppercase">Sponsored Advertisement</span>
-                </div>
+                {SHOW_ADS && (
+                    <div className="w-full bg-slate-200/50 h-32 rounded-2xl flex items-center justify-center border-2 border-dashed border-slate-300 mb-16">
+                        <span className="text-slate-400 text-sm font-medium tracking-widest uppercase">Sponsored Advertisement</span>
+                    </div>
+                )}
 
                 <section>
                     <h2 className="text-2xl font-bold text-slate-800 mb-8 flex items-center gap-2">
