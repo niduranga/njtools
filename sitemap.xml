@@ -7,6 +7,8 @@
     <url>
         <loc>https://njtools.xyz/tools/svg-to-png</loc>
         <loc>https://njtools.xyz/tools/png-to-svg</loc>
+        <loc>https://njtools.xyz/tools/json-formatter</loc>
+        <loc>https://njtools.xyz/tools/unit-converter</loc>
         <priority>0.8</priority>
     </url>
 </urlset>
