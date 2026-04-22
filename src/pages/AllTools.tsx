@@ -11,7 +11,7 @@ const AllTools: React.FC = () => {
             <Helmet>
                 <title>All Online Tools | NJTools</title>
                 <meta name="description" content="Explore all professional-grade web tools at NJTools. Fast, secure, and browser-based utilities." />
-                <link rel="canonical" href="https://njtools.xyz/tools" />
+                <link rel="canonical" href="https://njtools.xyz/tools/" />
             </Helmet>
 
             <div className="max-w-6xl mx-auto">

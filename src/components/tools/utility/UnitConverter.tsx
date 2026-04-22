@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRightLeft } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ArrowRightLeft, Scale, Ruler, Zap } from 'lucide-react';
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
 
-// Units definition with strict typing
 const unitsData = {
     length: {
         meter: 1,
@@ -32,7 +31,7 @@ const UnitConverter: React.FC = () => {
     const [toUnit, setToUnit] = useState<string>('kilometer');
     const [result, setResult] = useState<number>(0);
 
-    const convert = () => {
+    const convert = useCallback(() => {
         const val = parseFloat(value);
         if (isNaN(val)) {
             setResult(0);
@@ -44,16 +43,14 @@ const UnitConverter: React.FC = () => {
         const toRate = rates[toUnit];
 
         if (fromRate && toRate) {
-            // Convert to base (e.g., meter/kilogram) then to target
             const converted = (val / fromRate) * toRate;
             setResult(converted);
         }
-    };
+    }, [value, fromUnit, toUnit, category]);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         convert();
-    }, [value, fromUnit, toUnit, category, convert]);
+    }, [convert]);
 
     const handleCategoryChange = (cat: CategoryType) => {
         setCategory(cat);
@@ -69,88 +66,111 @@ const UnitConverter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Unit Converter"
+            title="Precision Unit Converter"
             description="Quickly convert between different units of length and weight. Fast, accurate, and works entirely in your browser."
             seoContent={
-                <>
-                    <h2 className="text-xl font-bold text-slate-800">Precision Unit Conversion</h2>
-                    <p className="mt-2 text-slate-600">
-                        Whether you are a developer calculating pixels or an engineer working with metric units,
-                        NJTools provides an instant way to switch between systems without any server lag.
-                        <strong> All calculations are performed locally for maximum privacy.</strong>
-                    </p>
-                </>
+                <div className="space-y-6 text-slate-700 dark:text-slate-300">
+                    <section>
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 italic">
+                            <Zap className="text-blue-500" /> High-Precision Conversion
+                        </h2>
+                        <p className="leading-relaxed">
+                            Accurate unit conversion is a daily necessity for engineers and students.
+                            Our <strong className="text-blue-600 dark:text-blue-400">Online Unit Converter</strong> provides instant results across multiple measurement systems with clinical precision.
+                        </p>
+                    </section>
+
+                    <section className="bg-slate-900 dark:bg-slate-950 text-slate-300 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                        <h3 className="text-lg font-bold text-white mb-2 italic">Why Use NJTools?</h3>
+                        <p className="text-sm leading-relaxed opacity-90">
+                            NJTools runs on a lightweight architecture, ensuring calculations are private and server-free.
+                            The entire core is already in your browser for maximum speed.
+                        </p>
+                    </section>
+                </div>
             }
         >
             <Helmet>
                 <title>Free Online Unit Converter | Length & Weight | NJTools</title>
                 <meta name="description" content="Instant unit converter for length and weight. Convert meters, kilometers, miles, kilograms, and pounds accurately online." />
-                <meta name="keywords" content="unit converter, length converter, weight converter, meters to miles, kg to lbs, online converter, njtools, engineering tools" />
+                <meta name="keywords" content="unit converter, length converter, weight converter, meters to miles, kg to lbs, online converter, njtools" />
                 <link rel="canonical" href="https://njtools.xyz/tools/unit-converter" />
             </Helmet>
 
-            <div className="bg-white rounded-4xl border border-slate-100 shadow-sm p-8 max-w-4xl mx-auto">
+            <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl p-6 md:p-10 max-w-4xl mx-auto transition-colors">
                 {/* Category Selector */}
-                <div className="flex gap-4 mb-10 bg-slate-50 p-2 rounded-2xl w-fit mx-auto md:mx-0">
-                    {(Object.keys(unitsData) as CategoryType[]).map((cat) => (
-                        <button
-                            key={cat}
-                            onClick={() => handleCategoryChange(cat)}
-                            className={`px-8 py-2.5 rounded-xl font-bold capitalize transition-all duration-200 ${
-                                category === cat
-                                    ? 'bg-white shadow-md text-blue-600 scale-105'
-                                    : 'text-slate-500 hover:text-slate-800'
-                            }`}
-                        >
-                            {cat}
-                        </button>
-                    ))}
+                <div className="flex gap-2 mb-10 bg-slate-100 dark:bg-slate-800/50 p-1.5 rounded-2xl w-fit mx-auto">
+                    <button
+                        onClick={() => handleCategoryChange('length')}
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-black text-sm uppercase tracking-tighter transition-all ${
+                            category === 'length'
+                                ? 'bg-white dark:bg-slate-700 shadow-lg text-blue-600 dark:text-blue-400 scale-105'
+                                : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
+                        }`}
+                    >
+                        <Ruler size={16} /> Length
+                    </button>
+                    <button
+                        onClick={() => handleCategoryChange('weight')}
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-black text-sm uppercase tracking-tighter transition-all ${
+                            category === 'weight'
+                                ? 'bg-white dark:bg-slate-700 shadow-lg text-blue-600 dark:text-blue-400 scale-105'
+                                : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
+                        }`}
+                    >
+                        <Scale size={16} /> Weight
+                    </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-12 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center">
                     {/* From Section */}
-                    <div className="space-y-4 p-6 bg-slate-50/50 rounded-3xl border border-slate-100">
-                        <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Input Value</label>
+                    <div className="space-y-4 p-6 bg-slate-50 dark:bg-slate-950 rounded-3xl border border-slate-100 dark:border-slate-800 transition-colors">
+                        <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] ml-1">Input Value</label>
                         <input
                             type="number"
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
-                            className="w-full text-3xl font-bold bg-transparent outline-none border-b-2 border-slate-200 focus:border-blue-500 pb-2 transition-all"
+                            className="w-full text-4xl font-black bg-transparent outline-none border-b-4 border-slate-200 dark:border-slate-800 focus:border-blue-500 dark:focus:border-blue-400 pb-2 transition-all dark:text-white"
                         />
                         <select
                             value={fromUnit}
                             onChange={(e) => setFromUnit(e.target.value)}
-                            className="w-full p-3 bg-white rounded-xl border border-slate-200 outline-none font-semibold capitalize cursor-pointer focus:ring-2 focus:ring-blue-500/20"
+                            className="w-full p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 outline-none font-bold capitalize cursor-pointer focus:ring-4 focus:ring-blue-500/10 dark:text-slate-200 transition-all"
                         >
                             {Object.keys(unitsData[category]).map(u => <option key={u} value={u}>{u}</option>)}
                         </select>
                     </div>
 
                     {/* Swap Button */}
-                    <div className="flex justify-center -my-4 md:my-0">
+                    <div className="flex justify-center -my-6 md:my-0 z-10">
                         <button
                             onClick={swapUnits}
-                            className="p-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 active:scale-90 hover:rotate-180 duration-500"
+                            className="group p-5 bg-blue-600 dark:bg-blue-500 text-white rounded-full hover:bg-blue-700 dark:hover:bg-blue-400 transition-all shadow-xl shadow-blue-500/20 active:scale-90"
+                            title="Swap Units"
                         >
-                            <ArrowRightLeft className="w-6 h-6" />
+                            <ArrowRightLeft className="w-6 h-6 group-hover:rotate-180 transition-transform duration-500" />
                         </button>
                     </div>
 
                     {/* To Section */}
-                    <div className="space-y-4 p-6 bg-blue-50/30 rounded-3xl border border-blue-100/50">
-                        <label className="text-xs font-bold text-blue-400 uppercase tracking-widest ml-1">Converted Result</label>
-                        <div className="text-3xl font-bold text-slate-900 border-b-2 border-transparent pb-2 truncate">
+                    <div className="space-y-4 p-6 bg-blue-50/30 dark:bg-blue-900/10 rounded-3xl border border-blue-100/50 dark:border-blue-900/30 transition-colors">
+                        <label className="text-[10px] font-black text-blue-500 dark:text-blue-400 uppercase tracking-[0.2em] ml-1">Result</label>
+                        <div className="text-4xl font-black text-slate-900 dark:text-blue-400 border-b-4 border-transparent pb-2 truncate">
                             {result.toLocaleString(undefined, { maximumFractionDigits: 6 })}
                         </div>
                         <select
                             value={toUnit}
                             onChange={(e) => setToUnit(e.target.value)}
-                            className="w-full p-3 bg-white rounded-xl border border-slate-200 outline-none font-semibold capitalize cursor-pointer focus:ring-2 focus:ring-blue-500/20"
+                            className="w-full p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 outline-none font-bold capitalize cursor-pointer focus:ring-4 focus:ring-blue-500/10 dark:text-slate-200 transition-all"
                         >
                             {Object.keys(unitsData[category]).map(u => <option key={u} value={u}>{u}</option>)}
                         </select>
                     </div>
                 </div>
+
+                <p className="text-center mt-8 text-[10px] text-slate-400 dark:text-slate-600 font-bold uppercase tracking-widest">
+                    Real-time stateless conversion • 6-Decimal precision
+                </p>
             </div>
         </ToolLayout>
     );

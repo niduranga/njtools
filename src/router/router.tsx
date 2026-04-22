@@ -1,4 +1,4 @@
-import {createHashRouter} from "react-router";
+import {createBrowserRouter} from "react-router";
 import RootLayout from "../components/layout/RootLayout.tsx";
 import Home from "../pages/Home.tsx";
 import {DynamicToolWrapper} from "../pages/DynamicToolWrapper.tsx";
@@ -7,8 +7,9 @@ import TermsOfService from "../pages/TermsOfService.tsx";
 import ContactUs from "../pages/ContactUs.tsx";
 import AboutUs from "../pages/AboutUs.tsx";
 import AllTools from "../pages/AllTools.tsx";
+import NotFound from "../pages/NotFound.tsx";
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
     {
         path: '/',
         element: <RootLayout/>,
@@ -42,5 +43,9 @@ export const router = createHashRouter([
                 element: <AllTools />,
             },
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound/>
     }
 ])

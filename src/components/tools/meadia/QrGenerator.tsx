@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
-import { Download, Image as ImageIcon, Link as LinkIcon } from 'lucide-react';
+import { Download, Image as ImageIcon, Link as LinkIcon, QrCode } from 'lucide-react';
 
 const QrGenerator: React.FC = () => {
     const [url, setUrl] = useState('https://njtools.xyz');
@@ -49,10 +49,33 @@ const QrGenerator: React.FC = () => {
             title="Custom QR Code Generator"
             description="Create professional QR codes with your custom logo for free. Instant download in high resolution."
             seoContent={
-                <>
-                    <h2 className="text-xl font-bold">Why use our QR Generator?</h2>
-                    <p className="mt-2">Unlike other tools, NJTools allows you to add your brand logo to QR codes without any watermark or subscription. Perfect for business cards, posters, and menus.</p>
-                </>
+                /* Dark Mode Text Colors */
+                <div className="space-y-6 text-slate-700 dark:text-slate-300">
+                    <section>
+                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Professional QR Code Generator</h2>
+                        <p className="leading-relaxed">
+                            QR codes have become essential for modern marketing. Our <strong className="text-indigo-600 dark:text-indigo-400">Custom QR Code Generator</strong> allows you to embed your brand's personality into every scan.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Why Use Branded QR Codes?</h3>
+                        <ul className="list-disc ml-6 space-y-1">
+                            <li><strong className="text-slate-900 dark:text-white">Custom Logo Integration:</strong> Upload your logo to sit in the center.</li>
+                            <li><strong className="text-slate-900 dark:text-white">Error Correction (Level H):</strong> Remain scannable even if partially damaged.</li>
+                        </ul>
+                    </section>
+
+                    <section className="bg-indigo-600 dark:bg-indigo-900 p-6 rounded-xl shadow-lg border border-indigo-500/30">
+                        <h3 className="text-lg font-bold mb-2 text-white flex items-center gap-2">
+                            <QrCode className="w-5 h-5" /> Secure and Data-Free
+                        </h3>
+                        <p className="text-sm leading-relaxed text-indigo-50 opacity-90">
+                            NJTools values your anonymity. Your custom logos are processed locally in your browser.
+                            Your data remains yours—no redirection, no tracking.
+                        </p>
+                    </section>
+                </div>
             }
         >
             <Helmet>
@@ -65,37 +88,47 @@ const QrGenerator: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Input Section */}
                 <div className="space-y-6">
-                    <div className="p-6 border rounded-2xl bg-white shadow-sm space-y-4">
+                    <div className="p-6 border dark:border-slate-700 rounded-2xl bg-white dark:bg-slate-800 shadow-sm space-y-4 transition-colors">
                         <div>
-                            <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2">
-                                <LinkIcon size={16} /> Enter URL or Text
+                            <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">
+                                <LinkIcon size={16} className="text-indigo-500" /> Enter URL or Text
                             </label>
                             <input
                                 type="text"
                                 value={url}
                                 onChange={(e) => setUrl(e.target.value)}
-                                className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"
+                                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition dark:text-white"
                                 placeholder="https://example.com"
                             />
                         </div>
 
                         <div>
-                            <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2">
-                                <ImageIcon size={16} /> Add Custom Logo (Optional)
+                            <label className="flex items-center gap-2 text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">
+                                <ImageIcon size={16} className="text-indigo-500" /> Add Custom Logo (Optional)
                             </label>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handleLogoUpload}
-                                className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer"
-                            />
+                            <div className="relative">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleLogoUpload}
+                                    className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 dark:file:bg-indigo-900/30 file:text-indigo-700 dark:file:text-indigo-300 hover:file:bg-indigo-100 dark:hover:file:bg-indigo-900/50 cursor-pointer transition-all"
+                                />
+                                {logo && (
+                                    <button
+                                        onClick={() => setLogo(undefined)}
+                                        className="mt-2 text-[10px] text-red-500 hover:underline font-bold uppercase tracking-tighter"
+                                    >
+                                        Remove Logo
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Preview & Download Section */}
-                <div className="flex flex-col items-center justify-center p-8 border border-indigo-100 rounded-2xl bg-indigo-50/20">
-                    <div className="bg-white p-6 rounded-2xl shadow-xl mb-6">
+                <div className="flex flex-col items-center justify-center p-8 border border-indigo-100 dark:border-slate-700 rounded-2xl bg-indigo-50/20 dark:bg-slate-800/50">
+                    <div className="bg-white p-6 rounded-2xl shadow-xl mb-6 ring-8 ring-indigo-50 dark:ring-slate-700/50">
                         <QRCodeSVG
                             ref={qrRef}
                             value={url}
@@ -115,11 +148,13 @@ const QrGenerator: React.FC = () => {
 
                     <button
                         onClick={downloadQR}
-                        className="flex items-center gap-2 bg-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-700 transition transform hover:scale-105 shadow-lg"
+                        className="flex items-center gap-2 bg-indigo-600 dark:bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 dark:hover:bg-indigo-600 transition transform hover:scale-105 shadow-xl shadow-indigo-500/20"
                     >
-                        <Download size={20} /> Download PNG
+                        <Download size={20} /> Download 500x500 PNG
                     </button>
-                    <p className="mt-4 text-xs text-gray-400 font-medium italic">NJTools uses 500x500 high-res output for crisp printing.</p>
+                    <p className="mt-4 text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-widest">
+                        High-Resolution Vector Output
+                    </p>
                 </div>
             </div>
         </ToolLayout>
