@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRightLeft } from 'lucide-react';
-import ToolLayout from '../layout/ToolLayout';
+import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
 
 // Units definition with strict typing

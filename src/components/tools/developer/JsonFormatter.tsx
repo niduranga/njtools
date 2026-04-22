@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Trash2, CheckCircle, AlertCircle } from 'lucide-react';
-import ToolLayout from '../layout/ToolLayout';
+import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
 
 const JsonFormatter: React.FC = () => {

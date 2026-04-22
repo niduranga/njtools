@@ -1,5 +1,5 @@
 import React, { useState, useRef, type ChangeEvent } from 'react';
-import ToolLayout from '../layout/ToolLayout';
+import ToolLayout from '../../layout/ToolLayout.tsx';
 import {Helmet} from "react-helmet-async";
 
 const SvgConverter: React.FC = () => {

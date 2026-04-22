@@ -73,4 +73,4 @@ This project is the exclusive property of Niduranga Jayarathna. Use of this sour
 
 ## 👨‍💻 Author
 
-**Niduranga Jayarathna** *Senior Full-stack Developer & Engineering Student* [Portfolio](https://niduranga.github.io) | [LinkedIn](https://linkedin.com/in/niduranga)
+**Niduranga Jayarathna** *Senior Full-stack Developer & Engineering Student* [Portfolio](https://niduranga.github.io/niduranga_jayarathna/) | [LinkedIn](https://linkedin.com/in/niduranga)

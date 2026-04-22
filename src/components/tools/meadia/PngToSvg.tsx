@@ -1,6 +1,6 @@
 import React, { useState, type ChangeEvent } from 'react';
 import ImageTracer from 'imagetracerjs';
-import ToolLayout from '../layout/ToolLayout';
+import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
 
 const PngToSvg: React.FC = () => {
