@@ -4,8 +4,8 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>https://njtools.xyz/</loc>
-        <lastmod>2026-04-22</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-04-23</lastmod>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
@@ -96,6 +96,30 @@
     <url>
         <loc>https://njtools.xyz/tools/qr-generator/</loc>
         <lastmod>2026-04-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://njtools.xyz/tools/image-resizer/</loc>
+        <lastmod>2026-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://njtools.xyz/tools/color-palette/</loc>
+        <lastmod>2026-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://njtools.xyz/tools/favicon-generator/</loc>
+        <lastmod>2026-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://njtools.xyz/tools/instagram-grid/</loc>
+        <lastmod>2026-04-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
