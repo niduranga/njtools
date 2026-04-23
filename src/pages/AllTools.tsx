@@ -31,7 +31,6 @@ const AllTools: React.FC = () => {
         setSearchParams(newParams);
     };
 
-    // Search and Category Filtering Logic
     const filteredTools = useMemo(() => {
         return TOOLS_CONFIG.filter(tool => {
             const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -110,40 +109,36 @@ const AllTools: React.FC = () => {
                     </h2>
 
                     {filteredTools.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredTools.map((tool) => (
                                 <Link
                                     key={tool.id}
                                     to={`/tools/${tool.id}`}
-                                    className="group bg-white dark:bg-gray-800 p-6 rounded-2xl border border-slate-200 dark:border-gray-700 shadow-sm hover:shadow-md dark:hover:shadow-gray-900/50 hover:border-blue-300 dark:hover:border-blue-900 transition-all duration-300 flex flex-col"
+                                    className="group bg-white dark:bg-gray-800 p-8 rounded-3xl border border-slate-200 dark:border-gray-700 shadow-sm hover:shadow-2xl dark:hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-300"
                                 >
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div className="p-3 bg-slate-50 dark:bg-gray-700 rounded-xl group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-colors text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                                            {tool.icon}
+                                    <div className="flex items-start justify-between mb-6">
+                                        <div className="p-4 bg-slate-50 dark:bg-blue-500/10 dark:text-blue-500 rounded-2xl group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 transition-colors">
+                                            {React.cloneElement(tool.icon as React.ReactElement, { size: 32 } as any)}
                                         </div>
-                                        <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-gray-700 px-2 py-1 rounded">
+                                        <span className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg">
                                             {tool.category}
                                         </span>
                                     </div>
-                                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                        {tool.name}
-                                    </h3>
-                                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-4 leading-relaxed grow">
-                                        {tool.desc}
-                                    </p>
-                                    <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold text-sm group-hover:gap-2 transition-all">
-                                        Try it now <ArrowRight className="w-4 h-4 ml-1" />
+                                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">{tool.name}</h3>
+                                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-6">{tool.desc}</p>
+                                    <div className="flex items-center text-blue-600 dark:text-blue-400 font-black text-sm uppercase tracking-wider group-hover:gap-3 transition-all">
+                                        Open Tool <ArrowRight className="w-4 h-4 ml-1" />
                                     </div>
                                 </Link>
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-20 bg-white dark:bg-gray-800 rounded-3xl border border-dashed border-slate-200 dark:border-gray-700 transition-colors">
-                            <div className="bg-slate-100 dark:bg-gray-900 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Search size={40} className="text-slate-300" />
+                        <div className="text-center py-24 bg-white dark:bg-gray-800 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-gray-700 transition-colors">
+                            <div className="bg-slate-100 dark:bg-slate-900 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Search size={48} className="text-slate-300" />
                             </div>
-                            <h3 className="text-2xl font-black text-slate-900 dark:text-white italic uppercase">No tools found</h3>
-                            <p className="text-slate-400 dark:text-slate-500 font-bold mt-2">Try searching for something else, like "Image" or "Code".</p>
+                            <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-3">NO TOOLS FOUND</h3>
+                            <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto">We couldn't find anything matching your search. Try different keywords or browse by category.</p>
                         </div>
                     )}
                 </div>
