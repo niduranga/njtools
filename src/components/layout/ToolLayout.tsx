@@ -1,5 +1,6 @@
 import {Link, useLocation} from "react-router";
 import { TOOLS_CONFIG } from '../../config/tools.tsx';
+import { ArrowRight } from "lucide-react";
 
 interface IToolLayoutProps {
     children: React.ReactNode;
@@ -26,6 +27,11 @@ const ToolLayout: React.FC<IToolLayoutProps> = ({ children, title, description, 
     // Get "Popular Tools" (taking first 6 for better balance)
     const popularTools = TOOLS_CONFIG.slice(0, 6);
 
+    // Get "Related Tools" (tools in the same category, excluding current tool, taking up to 6)
+    const relatedTools = currentCategory 
+        ? TOOLS_CONFIG.filter(t => t.category === currentCategory && t.id !== currentToolId).slice(0, 6)
+        : [];
+
     return (
         <div className="max-w-400 mx-auto px-4 py-8 text-slate-800 dark:text-slate-200 transition-colors duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -37,7 +43,7 @@ const ToolLayout: React.FC<IToolLayoutProps> = ({ children, title, description, 
                             {categories.map(cat => (
                                 <li key={cat}>
                                     <Link 
-                                        to={`/tools/`} 
+                                        to={`/tools?category=${cat}`} 
                                         className={`font-medium transition flex items-center gap-2 group ${
                                             currentCategory === cat 
                                             ? 'text-blue-600 dark:text-blue-400 scale-105' 
@@ -81,6 +87,38 @@ const ToolLayout: React.FC<IToolLayoutProps> = ({ children, title, description, 
                     <article className="mt-12 p-8 bg-slate-50 dark:bg-slate-900/40 rounded-3xl border border-slate-100 dark:border-slate-800 transition-colors duration-300">
                         {seoContent}
                     </article>
+
+                    {relatedTools.length > 0 && (
+                        <div className="mt-12">
+                            <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-2">
+                                <span className="w-2 h-8 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
+                                Related Tools
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {relatedTools.map(tool => (
+                                    <Link
+                                        key={tool.id}
+                                        to={`/tools/${tool.id}/`}
+                                        className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md dark:hover:shadow-slate-900/50 hover:border-blue-300 dark:hover:border-blue-900 transition-all duration-300"
+                                    >
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-colors">
+                                                {tool.icon}
+                                            </div>
+                                            <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
+                                                {tool.category}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{tool.name}</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 text-sm mb-4 leading-relaxed">{tool.desc || tool.name}</p>
+                                        <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold text-sm group-hover:gap-2 transition-all">
+                                            Try it now <ArrowRight className="w-4 h-4 ml-1" />
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {SHOW_ADS && (
                         <div className="mt-10 bg-slate-50 dark:bg-slate-900/50 h-32 flex items-center justify-center border-dashed border-2 border-slate-200 dark:border-slate-800 rounded-2xl">

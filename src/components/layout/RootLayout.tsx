@@ -59,7 +59,7 @@ const RootLayout = () => {
             </nav>
 
             <main className="grow">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-9xl mx-auto">
                     <Outlet />
                 </div>
             </main>

@@ -100,13 +100,13 @@ const Home: React.FC = () => {
 
                     <div className="flex flex-wrap justify-center gap-4">
                         {['Media', 'Developer', 'Utility'].map((cat) => (
-                            <button
+                            <Link
                                 key={cat}
-                                onClick={() => setSearchQuery(cat)}
+                                to={`/tools?category=${cat}`}
                                 className="w-35 md:w-50 p-4 bg-white dark:bg-gray-800 border border-slate-200 dark:border-gray-700 rounded-xl text-center hover:bg-slate-50 dark:hover:bg-gray-750 hover:border-blue-300 dark:hover:border-blue-900 transition-all cursor-pointer"
                             >
                                 <span className="font-semibold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">{cat}</span>
-                            </button>
+                            </Link>
                         ))}
                     </div>
                 </section>

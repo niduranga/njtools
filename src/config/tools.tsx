@@ -97,7 +97,7 @@ export const TOOLS_CONFIG = [
         name: 'Pro Image Resizer',
         desc: 'Change image dimensions with aspect ratio lock and high-quality scaling.',
         component: <ImageResizer />,
-        icon: <Maximize className="w-6 h-6 text-blue-500" />,
+        icon: <Maximize className="w-6 h-6" />,
         category: 'Media'
     },
     {
