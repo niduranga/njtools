@@ -4,7 +4,6 @@ import Footer from "../Footer.tsx";
 import ReactGA from "react-ga4";
 import ThemeToggle from "../ThemeToggle.tsx";
 import { Menu, X } from "lucide-react";
-import logo from '../../../public/logo.png'
 
 const RootLayout = () => {
     const navigate = useNavigate();
@@ -61,7 +60,7 @@ const RootLayout = () => {
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <Link to="/" className="text-2xl font-black text-blue-600 dark:text-blue-500 tracking-tight flex items-center gap-2">
                         <div className="bg-blue-600 p-1.5 rounded-lg">
-                            <img src={logo} width={30} alt="NJTools-logo"/>
+                            <img src="/logo.png" width={30} alt="NJTools-logo"/>
                         </div>
                         <span>NJ<span className="text-gray-800 dark:text-white">Tools</span></span>
                     </Link>

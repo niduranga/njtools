@@ -26,6 +26,7 @@ import ColorPaletteGenerator from "../components/tools/meadia/ColorPaletteGenera
 import FaviconGenerator from "../components/tools/meadia/FaviconGenerator.tsx";
 import InstagramGridMaker from "../components/tools/meadia/InstagramGridMaker.tsx";
 import SafeAreaChecker from "../components/tools/meadia/SafeAreaChecker.tsx";
+import JWTDebugger from "../components/tools/developer/JWTDebugger.tsx";
 
 export const TOOLS_CONFIG = [
     {
@@ -139,6 +140,14 @@ export const TOOLS_CONFIG = [
         desc: 'Prettify, validate, and minify your JSON code instantly.',
         component: <JsonFormatter />,
         icon: <Code2 />,
+        category: 'Developer'
+    },
+    {
+        id: 'jwt-debugger',
+        name: 'JWT Debugger',
+        desc: 'Parse and inspect JSON Web Tokens instantly with local client-side decoding.',
+        component: <JWTDebugger />,
+        icon: <Code2 className="w-6 h-6" />,
         category: 'Developer'
     },
     {

@@ -76,9 +76,9 @@ const AboutUs: React.FC = () => {
 
                             <div className="p-8 space-y-6 text-center relative z-10">
                                 <div className="relative inline-block">
-                                    <div className="w-32 h-32 rounded-[2rem] overflow-hidden border-4 border-blue-600 shadow-xl mx-auto rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                                    <div className="w-32 h-32 rounded-4xl overflow-hidden border-4 border-blue-600 shadow-xl mx-auto rotate-3 group-hover:rotate-0 transition-transform duration-500">
                                         <img
-                                            src="https://media.licdn.com/dms/image/v2/D5603AQEE8sD9Qku4Bg/profile-displayphoto-scale_400_400/B56Z1rsg77IIAg-/0/1775628331221?e=1778112000&v=beta&t=AEcYcP14_qwwTkQBNERL73qoI1Ds1kRlTZuE4ENw2Ko"
+                                            src="/niduranga.jpg"
                                             alt="Niduranga Jayarathna"
                                             className="w-full h-full object-cover scale-110"
                                         />
