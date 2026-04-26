@@ -2,7 +2,7 @@ import SvgConverter from '../components/tools/meadia/SvgConverter.tsx';
 import {
     Code2, FileCode,
     FileImage,
-    FileSearch,
+    FileSearch, FileSpreadsheet,
     FileText,
     ImageIcon, LayoutGrid,
     Maximize,
@@ -27,6 +27,7 @@ import FaviconGenerator from "../components/tools/meadia/FaviconGenerator.tsx";
 import InstagramGridMaker from "../components/tools/meadia/InstagramGridMaker.tsx";
 import SafeAreaChecker from "../components/tools/meadia/SafeAreaChecker.tsx";
 import JWTDebugger from "../components/tools/developer/JWTDebugger.tsx";
+import JsonCsvConverter from "../components/tools/developer/JsonCsvConverter.tsx";
 
 export const TOOLS_CONFIG = [
     {
@@ -148,6 +149,14 @@ export const TOOLS_CONFIG = [
         desc: 'Parse and inspect JSON Web Tokens instantly with local client-side decoding.',
         component: <JWTDebugger />,
         icon: <Code2 className="w-6 h-6" />,
+        category: 'Developer'
+    },
+    {
+        id: 'json-csv-converter',
+        name: 'JSON to CSV Converter',
+        desc: 'Transform data between JSON and CSV formats for easy Excel or API integration.',
+        component: <JsonCsvConverter />,
+        icon: <FileSpreadsheet className="w-6 h-6" />,
         category: 'Developer'
     },
     {
