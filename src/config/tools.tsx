@@ -10,7 +10,8 @@ import {
     QrCode,
     Ruler, ShieldCheck,
     Sparkles,
-    Zap
+    Zap,
+    Lock
 } from 'lucide-react';
 import PngToSvg from "../components/tools/meadia/PngToSvg.tsx";
 import JsonFormatter from "../components/tools/developer/JsonFormatter.tsx";
@@ -28,6 +29,7 @@ import InstagramGridMaker from "../components/tools/meadia/InstagramGridMaker.ts
 import SafeAreaChecker from "../components/tools/meadia/SafeAreaChecker.tsx";
 import JWTDebugger from "../components/tools/developer/JWTDebugger.tsx";
 import JsonCsvConverter from "../components/tools/developer/JsonCsvConverter.tsx";
+import PasswordGenerator from "../components/tools/utility/PasswordGenerator.tsx";
 
 export const TOOLS_CONFIG = [
     {
@@ -166,5 +168,13 @@ export const TOOLS_CONFIG = [
         component: <UnitConverter />,
         icon: <Ruler />,
         category: 'Utility'
-    }
+    },
+    {
+        id: 'password-generator',
+        name: 'Strong Password Gen',
+        desc: 'Generate secure passwords with real-time entropy calculation using Web Crypto API.',
+        component: <PasswordGenerator />,
+        icon: <Lock className="w-6 h-6 " />,
+        category: 'Utility'
+    },
 ];
