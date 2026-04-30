@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>NJTools - High-Performance Web Utilities</title>
-    <meta name="title" content="NJTools - High-Performance Web Utilities" />
-    <meta name="description" content="Fast, secure, and browser-based tools for developers and creators. SVG to PNG, JSON Formatter, Unit Converter and more. 100% Privacy Focused." />
-    <meta name="keywords" content="developer tools, web utilities, svg to png, json formatter, image converter, privacy tools" />
+    <title>Unit Converter - NJTools</title>
+    <meta name="title" content="Unit Converter - NJTools" />
+    <meta name="description" content="Instant length and weight conversion with high precision." />
+    <meta name="keywords" content="unit converter, unit converter, njtools, web tool" />
     <meta name="author" content="Niduranga Jayarathna" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://njtools.xyz/" />
-    <meta property="og:title" content="NJTools - High-Performance Web Utilities" />
-    <meta property="og:description" content="Fast, secure, and browser-based tools for developers and creators. All processing happens in your browser." />
+    <meta property="og:url" content="https://njtools.xyz/tools/unit-converter" />
+    <meta property="og:title" content="Unit Converter - NJTools" />
+    <meta property="og:description" content="Instant length and weight conversion with high precision." />
     <meta property="og:image" content="https://njtools.xyz/og-image.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://njtools.xyz/" />
-    <meta property="twitter:title" content="NJTools - High-Performance Web Utilities" />
-    <meta property="twitter:description" content="Fast, secure, and browser-based tools for developers and creators. All processing happens in your browser." />
+    <meta property="twitter:url" content="https://njtools.xyz/tools/unit-converter" />
+    <meta property="twitter:title" content="Unit Converter - NJTools" />
+    <meta property="twitter:description" content="Instant length and weight conversion with high precision." />
     <meta property="twitter:image" content="https://njtools.xyz/og-image.png" />
 
     <!-- Start Single Page Apps for GitHub Pages -->
@@ -44,6 +44,66 @@
     <link rel="stylesheet" crossorigin href="/assets/index-BlkF2W1x.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="seo-content-static" style="display: none;">
+        <div class="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
+                    
+                    <section>
+                        <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-blue-600 w-fit pb-1">
+                            Precision-Engineered Unit Conversion
+                        </h2>
+                        <p class="leading-relaxed text-sm">
+                            In engineering and scientific computation, precision is non-negotiable. Our <strong class="text-blue-600 dark:text-blue-400">Online Unit Converter</strong> leverages a stateless, high-performance architecture to deliver instant results with <strong class="text-slate-900 dark:text-white">6-decimal accuracy</strong>. Whether you are scaling architectural blueprints or calculating chemical dosages, NJTools ensures zero computational drift.
+                        </p>
+                    </section>
+
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 class="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Linear Interpolation</h3>
+                            <p class="text-xs leading-relaxed">
+                                Our conversion engine utilizes standard SI unit constants for <strong class="text-slate-900 dark:text-white">Length and Weight</strong>. By normalizing all inputs to a base metric (meters or kilograms) before final calculation, we minimize rounding errors inherent in multi-step conversions.
+                            </p>
+                        </div>
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 class="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Zero-Latency V8 Execution</h3>
+                            <p class="text-xs leading-relaxed">
+                                Unlike traditional converters that rely on server-side PHP or Python processing, NJTools executes 100% of the logic within your browser's <strong class="text-slate-900 dark:text-white">V8 JavaScript Engine</strong>, providing sub-millisecond response times.
+                            </p>
+                        </div>
+                    </div>
+
+                    
+                    <section class="bg-blue-600 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+                        <div class="absolute -bottom-10 -right-10 opacity-10">
+                            
+                        </div>
+                        <h3 class="text-lg font-black text-white mb-2 italic tracking-tight uppercase">Stateless & Secure</h3>
+                        <p class="text-sm text-blue-50 leading-relaxed max-w-2xl">
+                            Data privacy is integrated into our source code. Your measurement data never leaves your local machine. No tracking, no logging, and no database synchronization—just pure, local-first utility for the global developer community.
+                        </p>
+                    </section>
+
+                    
+                    <section class="mt-10 border-t border-slate-100 dark:border-slate-800 pt-8">
+                        <h3 class="text-xl font-black text-slate-900 dark:text-white mb-6 italic uppercase">Technical Reference & FAQ</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">How does the converter handle decimal precision?</h4>
+                                <p class="text-sm">The tool uses the <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-blue-600">toLocaleString</code> method with a fixed <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-blue-600">maximumFractionDigits</code> of 6, ensuring that small variations in weight (like milligrams) remain visible while keeping length measurements clean.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">What are the supported measurement systems?</h4>
+                                <p class="text-sm">We currently support the International System of Units (SI) and the Imperial system, covering core units like Kilometers, Meters, Miles, Pounds (lbs), and Kilograms (kg).</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Can I use this for academic engineering work?</h4>
+                                <p class="text-sm text-blue-600 dark:text-blue-400 font-bold">Absolutely. The conversion constants are derived from NIST standards, making it reliable for university-level physics and engineering tasks.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+      </div>
+    </div>
   </body>
 </html>
