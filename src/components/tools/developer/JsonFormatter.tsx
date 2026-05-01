@@ -71,14 +71,85 @@ const JsonFormatter: React.FC = () => {
                             We do not use a backend database. Your JSON stays in the browser's memory, ensuring maximum security for professional development workflows.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10 text-sm">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">High-Performance JSON Hydration</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-medium">
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">V8 Engine Native Parsing</h4>
+                                <p className="leading-relaxed">
+                                    NJTools utilizes the <strong className="text-slate-900 dark:text-white">ECMAScript-native JSON.parse</strong> method, ensuring high-speed validation against the RFC 8259 standard. This approach prevents common parsing vulnerabilities while providing millisecond-latency performance for massive datasets.
+                                </p>
+                            </div>
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">Stateless Architecture</h4>
+                                <p className="leading-relaxed">
+                                    Our formatter is architected to be <strong className="text-slate-900 dark:text-white">Stateless and Ephemeral</strong>. Your code is stored only in the browser's volatile memory (RAM) and is never transmitted via HTTP requests. This architecture is critical for developers handling sensitive API responses or production logs.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-slate-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white border border-slate-800">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase underline decoration-blue-500">Developer's Security Log</h3>
+                            <p className="text-sm text-slate-300 leading-relaxed max-w-2xl font-medium">
+                                "By implementing <strong className="text-white font-bold">Client-Side Logic</strong>, we eliminate the 'Middleman' attack vector common in centralized online formatters. Your data never leaves your local environment, making it safe for processing <strong className="text-blue-400">Environment Variables, Auth Tokens, and PII data</strong> during debugging."
+                            </p>
+                        </div>
+                        <div className="absolute -top-5 -right-5 opacity-5 rotate-12">
+                            <Braces size={180} />
+                        </div>
+                    </div>
                 </div>
             }
         >
             <Helmet>
                 <title>Free JSON Formatter & Validator | Prettify JSON Online | NJTools</title>
-                <meta name="description" content="Best online JSON formatter to validate, beautify, and minify JSON code. Privacy-focused tool for developers." />
-                <meta name="keywords" content="json formatter, json validator, prettify json, minify json, online developer tools, njtools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/json-formatter" />
+                <meta name="description" content="Best online JSON formatter to validate, beautify, and minify JSON code. Privacy-focused tool for developers with 100% on-device processing." />
+                <meta name="keywords" content="json formatter, json validator, prettify json, minify json, online developer tools, njtools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/json-formatter/" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/json-formatter/" />
+                <meta property="og:title" content="Pro JSON Formatter & Validator | 100% Private | NJTools" />
+                <meta property="og:description" content="Instantly beautify or minify your JSON code. All processing happens locally in your browser for maximum security." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/json-formatter/" />
+                <meta property="twitter:title" content="JSON Formatter & Validator | NJTools" />
+                <meta property="twitter:description" content="Professional-grade JSON validation and formatting without server uploads." />
+                <meta property="twitter:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Software Application Schema */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional JSON Formatter",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DeveloperApplication",
+                        "featureList": [
+                            "Real-time Syntax Validation",
+                            "JSON Prettification (4-space indent)",
+                            "JSON Minification",
+                            "On-Device Privacy"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden transition-colors">

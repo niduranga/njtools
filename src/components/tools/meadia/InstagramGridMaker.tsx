@@ -154,6 +154,34 @@ const InstagramGridMaker: React.FC = () => {
                             By utilizing browser-native <strong className="text-blue-500">HTML5 Canvas ImageData API</strong>, NJTools isolates the quantization process in a client-side thread. This guarantees 100% privacy, as your source files never leave your machine and are processed without cloud latency.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Visual Flow Optimization</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-blue-600 uppercase">Aspect Ratio Integrity</h4>
+                                <p className="leading-relaxed">
+                                    Our algorithm maintains a strict <strong className="text-slate-900 dark:text-white">1:1 ratio per tile</strong>. By mathematically calculating the center-point of your source image, we eliminate unwanted letterboxing, ensuring your grid transition is seamless on both iOS and Android displays.
+                                </p>
+                            </div>
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-blue-600 uppercase">Lossless PNG Compression</h4>
+                                <p className="leading-relaxed">
+                                    Unlike standard online splitters that re-compress images into low-quality JPEGs, NJTools uses <strong className="text-slate-900 dark:text-white">PNG-24 encoding</strong>. This preserves the alpha channel and color depth, preventing the "blurry grid" effect after Instagram's own compression kicks in.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-slate-900 rounded-[2.5rem] border border-slate-800 relative overflow-hidden">
+                        <div className="relative z-10">
+                            <h3 className="text-xs font-black text-blue-500 mb-2 uppercase tracking-[0.3em]">Developer's Technical Log</h3>
+                            <p className="text-xs italic text-slate-400 leading-relaxed">
+                                "To handle large source files without crashing the browser tab, the Grid Maker utilizes <strong className="text-slate-200">CanvasRenderingContext2D.drawImage()</strong> with strategic memory clearing. Each 1080px tile is generated as a discrete blob before being piped into the <strong className="text-slate-200">JSZip stream</strong>, ensuring high performance even on mobile devices."
+                            </p>
+                        </div>
+                    </div>
                 </div>
             }
         >
@@ -161,12 +189,35 @@ const InstagramGridMaker: React.FC = () => {
                 <title>Free Instagram Grid Maker | Split Images into 9 Tiles | NJTools</title>
                 <meta name="description" content="Split your photos into a perfect 3x3 grid for Instagram instantly. Get a complete set of high-res PNG tiles in one ZIP file. Private & secure on-device processing." />
                 <meta name="keywords" content="instagram grid maker, split image into 9, instagram grid splitter, photo splitter, free instagram tool, private image splitter, NJTools, Niduranga Jayarathna" />
-                <link rel="canonical" href="https://njtools.xyz/tools/instagram-grid" />
+                <meta name="keywords" content="instagram grid maker, split image into 9 tiles, 3x3 grid splitter, professional instagram layout, high res grid export, njtools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/instagram-grid/" />
 
                 <meta property="og:title" content="Pro Instagram Grid Maker | Complete Asset Bundling | NJTools" />
                 <meta property="og:description" content="Split your photos into a perfect 3x3 grid for your Instagram profile. 100% private on-device processing." />
-                <meta property="og:url" content="https://njtools.xyz/tools/instagram-grid" />
+                <meta property="og:url" content="https://njtools.xyz/tools/instagram-grid/" />
                 <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Pro Instagram Grid Maker",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "PhotoApplication",
+                        "featureList": ["3x3 Image Splitting", "1080p High-Res Export", "Automated Center-Cropping", "Client-side ZIP Bundling"],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "Professional tool to split any image into a perfect 3x3 Instagram grid. High-resolution PNG output with zero server uploads."
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-4xl mx-auto space-y-10">

@@ -21,10 +21,10 @@ const Footer: React.FC = () => {
                     <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-6">Popular Tools</h4>
                         <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                            <li><Link to="/tools/svg-to-png" className="hover:text-blue-600 dark:hover:text-blue-400 transition">SVG to PNG Converter</Link></li>
-                            <li><Link to="/tools/png-to-svg" className="hover:text-blue-600 dark:hover:text-blue-400 transition">PNG to SVG Converter</Link></li>
+                            <li><Link to="/tools/svg-to-png/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">SVG to PNG Converter</Link></li>
+                            <li><Link to="/tools/png-to-svg/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">PNG to SVG Converter</Link></li>
                             <li className="pt-2 border-t border-slate-50 dark:border-slate-800">
-                                <Link to="/tools" className="text-blue-600 dark:text-blue-400 font-medium hover:underline">
+                                <Link to="/tools/" className="text-blue-600 dark:text-blue-400 font-medium hover:underline">
                                     View All Tools →
                                 </Link>
                             </li>
@@ -34,16 +34,16 @@ const Footer: React.FC = () => {
                     <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-6">Support</h4>
                         <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                            <li><Link to="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition">About Us</Link></li>
-                            <li><Link to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact Us</Link></li>
+                            <li><Link to="/about/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">About Us</Link></li>
+                            <li><Link to="/contact/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact Us</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-6">Legal</h4>
                         <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                            <li><Link to="/privacy-policy" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Privacy Policy</Link></li>
-                            <li><Link to="/terms-of-service" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Terms of Service</Link></li>
+                            <li><Link to="/privacy-policy/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Privacy Policy</Link></li>
+                            <li><Link to="/terms-of-service/" className="hover:text-blue-600 dark:hover:text-blue-400 transition">Terms of Service</Link></li>
                         </ul>
                     </div>
                 </div>

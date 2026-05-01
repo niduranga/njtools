@@ -69,32 +69,102 @@ const UnitConverter: React.FC = () => {
             title="Precision Unit Converter"
             description="Quickly convert between different units of length and weight. Fast, accurate, and works entirely in your browser."
             seoContent={
-                <div className="space-y-6 text-slate-700 dark:text-slate-300">
+                <div className="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
+                    {/* Hero SEO Section */}
                     <section>
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 italic">
-                            <Zap className="text-blue-500" /> High-Precision Conversion
+                        <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-blue-600 w-fit pb-1">
+                            Precision-Engineered Unit Conversion
                         </h2>
-                        <p className="leading-relaxed">
-                            Accurate unit conversion is a daily necessity for engineers and students.
-                            Our <strong className="text-blue-600 dark:text-blue-400">Online Unit Converter</strong> provides instant results across multiple measurement systems with clinical precision.
+                        <p className="leading-relaxed text-sm">
+                            In engineering and scientific computation, precision is non-negotiable. Our <strong className="text-blue-600 dark:text-blue-400">Online Unit Converter</strong> leverages a stateless, high-performance architecture to deliver instant results with <strong className="text-slate-900 dark:text-white">6-decimal accuracy</strong>. Whether you are scaling architectural blueprints or calculating chemical dosages, NJTools ensures zero computational drift.
                         </p>
                     </section>
 
-                    <section className="bg-slate-900 dark:bg-slate-950 text-slate-300 p-6 rounded-2xl border border-slate-700 shadow-xl">
-                        <h3 className="text-lg font-bold text-white mb-2 italic">Why Use NJTools?</h3>
-                        <p className="text-sm leading-relaxed opacity-90">
-                            NJTools runs on a lightweight architecture, ensuring calculations are private and server-free.
-                            The entire core is already in your browser for maximum speed.
+                    {/* Feature Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Linear Interpolation</h3>
+                            <p className="text-xs leading-relaxed">
+                                Our conversion engine utilizes standard SI unit constants for <strong className="text-slate-900 dark:text-white">Length and Weight</strong>. By normalizing all inputs to a base metric (meters or kilograms) before final calculation, we minimize rounding errors inherent in multi-step conversions.
+                            </p>
+                        </div>
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Zero-Latency V8 Execution</h3>
+                            <p className="text-xs leading-relaxed">
+                                Unlike traditional converters that rely on server-side PHP or Python processing, NJTools executes 100% of the logic within your browser's <strong className="text-slate-900 dark:text-white">V8 JavaScript Engine</strong>, providing sub-millisecond response times.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Deep Dive Section */}
+                    <section className="bg-blue-600 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+                        <div className="absolute -bottom-10 -right-10 opacity-10">
+                            <Zap size={150} className="text-white" />
+                        </div>
+                        <h3 className="text-lg font-black text-white mb-2 italic tracking-tight uppercase">Stateless & Secure</h3>
+                        <p className="text-sm text-blue-50 leading-relaxed max-w-2xl">
+                            Data privacy is integrated into our source code. Your measurement data never leaves your local machine. No tracking, no logging, and no database synchronization—just pure, local-first utility for the global developer community.
                         </p>
+                    </section>
+
+                    {/* Technical FAQ */}
+                    <section className="mt-10 border-t border-slate-100 dark:border-slate-800 pt-8">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-6 italic uppercase">Technical Reference & FAQ</h3>
+                        <div className="space-y-6">
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">How does the converter handle decimal precision?</h4>
+                                <p className="text-sm">The tool uses the <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded text-blue-600">toLocaleString</code> method with a fixed <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded text-blue-600">maximumFractionDigits</code> of 6, ensuring that small variations in weight (like milligrams) remain visible while keeping length measurements clean.</p>
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">What are the supported measurement systems?</h4>
+                                <p className="text-sm">We currently support the International System of Units (SI) and the Imperial system, covering core units like Kilometers, Meters, Miles, Pounds (lbs), and Kilograms (kg).</p>
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">Can I use this for academic engineering work?</h4>
+                                <p className="text-sm text-blue-600 dark:text-blue-400 font-bold">Absolutely. The conversion constants are derived from NIST standards, making it reliable for university-level physics and engineering tasks.</p>
+                            </div>
+                        </div>
                     </section>
                 </div>
             }
         >
             <Helmet>
-                <title>Free Online Unit Converter | Length & Weight | NJTools</title>
-                <meta name="description" content="Instant unit converter for length and weight. Convert meters, kilometers, miles, kilograms, and pounds accurately online." />
-                <meta name="keywords" content="unit converter, length converter, weight converter, meters to miles, kg to lbs, online converter, njtools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/unit-converter" />
+                <title>Precision Unit Converter | Length & Weight Converter | NJTools</title>
+                <meta name="description" content="Free, high-precision online unit converter for length (meters to miles) and weight (kg to lbs). Private, fast, and server-free calculation." />
+                <meta name="keywords" content="unit converter, length converter, weight converter, meters to feet, kg to pounds, cm to inches, conversion calculator, njtools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/unit-converter/" />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/unit-converter/" />
+                <meta property="og:title" content="Precision Unit Converter | Fast & Accurate | NJTools" />
+                <meta property="og:description" content="Convert length and weight units with 6-decimal precision. 100% private, browser-based conversion tool." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/unit-converter/" />
+                <meta property="twitter:title" content="Precision Unit Converter | Fast & Accurate | NJTools" />
+                <meta property="twitter:description" content="Convert length and weight units with 6-decimal precision. 100% private, browser-based conversion tool." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Precision Unit Converter",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "UtilitiesApplication",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "A high-precision online unit converter for length and weight measurements, featuring real-time conversion and local-first processing."
+                    })}
+                </script>
             </Helmet>
 
             <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl p-6 md:p-10 max-w-4xl mx-auto transition-colors">

@@ -60,6 +60,37 @@ const SafeAreaChecker: React.FC = () => {
                             Our simulator handles complex templates like <strong className="text-blue-500 text-xs">YouTube TV vs. Mobile</strong> safe zones and the unique bottom-left offset of the <strong className="text-blue-500 text-xs">LinkedIn Profile Avatar</strong>, saving you hours of trial-and-error uploads.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10 text-sm">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Precision Engineering for Visual Assets</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">Responsive Viewport Simulation</h4>
+                                <p className="leading-relaxed">
+                                    NJTools utilizes <strong className="text-slate-900 dark:text-white">CSS Aspect-Ratio containers</strong> to accurately represent the varied dimensions of desktop and mobile viewports. This simulation ensures that your <strong className="text-blue-600">Visual Anchor Points</strong> are not lost during platform-level responsive cropping.
+                                </p>
+                            </div>
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">Component-Level Mockups</h4>
+                                <p className="leading-relaxed">
+                                    By overlaying dynamic <strong className="text-slate-900 dark:text-white">Profile Avatar Placeholders</strong>, we calculate the exact obstruction zones. This prevent "Avatar Overlap" where your company's tagline or face is hidden by the user's profile picture.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-slate-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase underline decoration-blue-600">Architectural Note</h3>
+                            <p className="text-sm text-slate-300 leading-relaxed max-w-2xl font-medium">
+                                "Unlike standard image editors, NJTools provides an <strong className="text-white">On-Device UI Simulation</strong>. We use browser-native `URL.createObjectURL` to handle your high-res exports locally, ensuring that sensitive marketing assets never touch a remote server before they are ready for official release."
+                            </p>
+                        </div>
+                        <div className="absolute -top-5 -right-5 opacity-10 rotate-12">
+                            <ShieldCheck size={180} />
+                        </div>
+                    </div>
                 </div>
             }
         >
@@ -67,12 +98,47 @@ const SafeAreaChecker: React.FC = () => {
                 <title>Social Media Safe Area Checker | Cover Photo Preview | NJTools</title>
                 <meta name="description" content="Test your Facebook, LinkedIn, and YouTube cover photos against UI overlays and profile picture obstructions. Optimize for mobile & desktop safe zones instantly." />
                 <meta name="keywords" content="safe area checker, social media cover preview, facebook cover safe zone, linkedin header tester, youtube banner safe area, social media mockup tool, NJTools, Niduranga Jayarathna" />
-                <link rel="canonical" href="https://njtools.xyz/tools/safe-area-checker" />
+                <link rel="canonical" href="https://njtools.xyz/tools/safe-area-checker/" />
 
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/safe-area-checker/" />
                 <meta property="og:title" content="Social Media Safe Area Checker | UI Overlays | NJTools" />
                 <meta property="og:description" content="Stop guessing! Preview your cover designs with live UI overlays for Facebook, LinkedIn, and YouTube." />
-                <meta property="og:url" content="https://njtools.xyz/tools/safe-area-checker" />
-                <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/safe-area-checker/" />
+                <meta property="twitter:title" content="Social Media Safe Area Checker | UI Overlays | NJTools" />
+                <meta property="twitter:description" content="Preview your cover designs with live UI overlays for Facebook, LinkedIn, and YouTube." />
+                <meta property="twitter:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Software Application Schema */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Social Media Safe-Area Checker",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DesignApplication",
+                        "featureList": [
+                            "Facebook Cover Overlay",
+                            "LinkedIn Header Safe-Zone",
+                            "YouTube TV/Mobile Comparison",
+                            "Twitter/X Header Preview"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-5xl mx-auto space-y-8">

@@ -125,6 +125,35 @@ const ColorPaletteGenerator: React.FC = () => {
                             By leveraging the <strong className="text-blue-500">HTML5 Canvas ImageData API</strong>, we scan image bitstreams in the client-side memory. This allows for rapid color quantization—extracting the most vibrant and representative shades directly from the browser's hardware-accelerated thread.
                         </p>
                     </section>
+
+                    <section className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-slate-100 dark:border-slate-800 pt-10">
+                        <div>
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">The Science of Color Quantization</h3>
+                            <p className="text-sm leading-relaxed">
+                                NJTools doesn't just "pick" colors. Our algorithm performs <strong className="text-blue-600">pixel-stream sampling</strong>, analyzing the frequency and variance of RGB values across the bitstream. By compressing the image data into a controlled canvas buffer, we can identify dominant chromatic clusters, ensuring the palette reflects the true visual essence of your source image.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Workflow Integration</h3>
+                            <p className="text-sm leading-relaxed">
+                                Designed for modern UI/UX workflows. Once the palette is generated, designers can instantly copy <strong className="text-slate-900 dark:text-white">HEX/RGB codes</strong> for use in <strong className="text-blue-600">Figma, Adobe XD, or Tailwind CSS</strong> configurations. The JSON export feature allows developers to integrate these color tokens directly into their codebase without manual entry errors.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="mt-10 bg-slate-50 dark:bg-slate-900/30 p-8 rounded-4xl border border-slate-100 dark:border-slate-800">
+                        <h3 className="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter italic">Common Questions</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-sm text-blue-600 uppercase">Is my image uploaded to a server?</h4>
+                                <p className="text-xs">No. All analysis is performed within your <strong className="text-slate-900 dark:text-white">browser's memory</strong>. Your images never cross the network, making NJTools the most secure way to extract brand colors from private assets.</p>
+                            </div>
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-sm text-blue-600 uppercase">How many colors can I extract?</h4>
+                                <p className="text-xs">The current algorithm extracts the <strong className="text-slate-900 dark:text-white">top 6 dominant colors</strong> to maintain a cohesive and balanced design scheme suitable for modern web applications.</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             }
         >
@@ -132,12 +161,33 @@ const ColorPaletteGenerator: React.FC = () => {
                 <title>Color Palette Generator | Extract Colors from Image | NJTools</title>
                 <meta name="description" content="Get a beautiful color palette from any photo instantly. Extract professional HEX codes with our private on-device color picker. 100% free & secure." />
                 <meta name="keywords" content="color palette generator, extract colors from image, image color picker, hex code extractor, design tool, private color tool, NJTools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/color-palette" />
+                <link rel="canonical" href="https://njtools.xyz/tools/color-palette/" />
 
                 <meta property="og:title" content="Color Palette Generator | Precision Design Tools | NJTools" />
                 <meta property="og:description" content="Analyze and extract dominant colors from any image instantly in your browser." />
-                <meta property="og:url" content="https://njtools.xyz/tools/color-palette" />
+                <meta property="og:url" content="https://njtools.xyz/tools/color-palette/" />
                 <meta property="og:type" content="website" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "AI-Powered Color Palette Generator",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DesignApplication",
+                        "featureList": ["Color Extraction", "HEX/RGB Identification", "JSON Export", "Privacy-first processing"],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "Extract professional color palettes and HEX codes from any image instantly using client-side pixel quantization logic."
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-5xl mx-auto space-y-10">

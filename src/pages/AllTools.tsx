@@ -45,11 +45,11 @@ const AllTools: React.FC = () => {
             <Helmet>
                 <title>All Online Tools | High-Performance Web Utilities | NJTools</title>
                 <meta name="description" content="Explore the complete suite of professional web tools at NJTools. Fast, secure, and 100% private browser-based utilities for developers and creators." />
-                <link rel="canonical" href="https://njtools.xyz/tools" />
+                <link rel="canonical" href="https://njtools.xyz/tools/" />
 
                 <meta property="og:title" content="All Online Tools | NJTools Directory" />
                 <meta property="og:description" content="Professional-grade tools for image processing, developer utilities, and daily tasks." />
-                <meta property="og:url" content="https://njtools.xyz/tools" />
+                <meta property="og:url" content="https://njtools.xyz/tools/" />
             </Helmet>
 
             <section className="bg-white dark:bg-gray-800 border-b border-slate-200 dark:border-gray-700 py-16 px-4 transition-colors duration-300">

@@ -2,7 +2,7 @@ import React, { useState, type ChangeEvent } from 'react';
 import imageCompression from 'browser-image-compression';
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
-import { Download, Upload, Trash2, Zap } from 'lucide-react';
+import { Download, Upload, Trash2 } from 'lucide-react';
 
 const ImageCompressor: React.FC = () => {
     const [originalImage, setOriginalImage] = useState<File | null>(null);
@@ -47,39 +47,86 @@ const ImageCompressor: React.FC = () => {
             title="Privacy-Focused Image Compressor"
             description="Reduce image file size without losing quality. All processing happens locally in your browser."
             seoContent={
-                <div className="space-y-6 text-slate-700 dark:text-slate-300">
+                <div className="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
                     <section>
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Optimize Performance with Smart Image Compression</h2>
-                        <p className="leading-relaxed">
-                            Large image files are the primary cause of slow website loading times.
-                            Our <strong className="text-blue-600 dark:text-blue-400">Smart Image Compressor</strong> helps you find the perfect balance between file size and visual quality.
+                        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-blue-600 w-fit pb-1">
+                            Next-Gen Image Optimization
+                        </h2>
+                        <p className="leading-relaxed text-sm">
+                            Web performance starts with asset management. Our <strong className="text-blue-600 dark:text-blue-400">Online Image Compressor</strong> utilizes advanced <strong className="text-slate-900 dark:text-white">multi-threaded Web Workers</strong> to reduce file sizes by up to 90% without visible degradation. This client-side approach ensures that your high-resolution assets are processed in your browser's sandboxed environment, maximizing both speed and data integrity.
                         </p>
                     </section>
 
-                    <section>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Key Benefits</h3>
-                        <ul className="list-disc ml-6 space-y-1">
-                            <li><strong className="text-slate-900 dark:text-white">Improve Page Speed:</strong> Faster loading times for better UX.</li>
-                            <li><strong className="text-slate-900 dark:text-white">Privacy Guaranteed:</strong> NJTools compresses everything locally. Your photos stay on your machine.</li>
-                        </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Lanczos Resampling</h3>
+                            <p className="text-xs leading-relaxed">
+                                By leveraging browser-native canvas APIs and high-quality resampling filters, we ensure that sharpness is preserved during the <strong className="text-slate-900 dark:text-white">Width/Height downscaling</strong> process, making it ideal for web developers and social media managers.
+                            </p>
+                        </div>
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Asynchronous Processing</h3>
+                            <p className="text-xs leading-relaxed">
+                                The compression logic runs in a separate thread to prevent <strong className="text-slate-900 dark:text-white">UI-jank</strong>. This allows the main thread to remain responsive, providing a seamless user experience even when processing multi-megabyte image files.
+                            </p>
+                        </div>
+                    </div>
+
+                    <section className="bg-blue-600 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase">Architectural Privacy</h3>
+                        <p className="text-sm text-blue-50 leading-relaxed max-w-2xl">
+                            Standard compressors upload your data to a server. NJTools implements an <strong className="text-white font-bold">Offline-First</strong> strategy. Your binary image data stays within your local RAM, ensuring 100% compliance with corporate data protection policies.
+                        </p>
                     </section>
 
-                    <section className="bg-blue-50 dark:bg-slate-800/50 p-6 rounded-xl border border-blue-100 dark:border-slate-700 shadow-sm">
-                        <h3 className="text-lg font-bold text-blue-700 dark:text-blue-400 mb-2 italic flex items-center gap-2">
-                            <Zap className="w-5 h-5" /> How it Works
-                        </h3>
-                        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                            Our compressor uses intelligent algorithms to strip away unnecessary color data and metadata. The result is a significantly smaller file that looks identical to the original.
-                        </p>
+                    <section className="mt-10 border-t border-slate-100 dark:border-slate-800 pt-8">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-6 italic uppercase">Optimization FAQ</h3>
+                        <div className="space-y-6">
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">What formats are supported?</h4>
+                                <p className="text-sm">We fully support <strong className="text-blue-600">JPEG, PNG, and WebP</strong> formats, which are the primary drivers of modern web traffic.</p>
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">How much size reduction can I expect?</h4>
+                                <p className="text-sm">Typically, images can be reduced by <strong className="text-slate-900 dark:text-white">60% to 80%</strong> with negligible impact on quality for 1080p and 4K displays.</p>
+                            </div>
+                        </div>
                     </section>
                 </div>
             }
         >
             <Helmet>
                 <title>Free Image Compressor | Reduce Photo Size Online | NJTools</title>
-                <meta name="description" content="Compress JPG, PNG, and WebP images locally. Fast, secure, and no upload required." />
-                <meta name="keywords" content="image compressor, reduce image size, online photo compressor, private image compression, NJTools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/image-compressor" />
+                <meta name="description" content="Compress JPG, PNG, and WebP images locally with zero quality loss. High-speed, private, and no-upload tool for developers and designers." />
+                <meta name="keywords" content="image compressor, reduce image size, online photo compressor, private image compression, web worker image tool, optimize image for web, NJTools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/image-compressor/" />
+
+                {/* OG Meta */}
+                <meta property="og:title" content="Fast & Private Image Compressor | NJTools" />
+                <meta property="og:description" content="Reduce file sizes instantly in your browser without uploading your photos. Fast, secure, and 100% free." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+                <meta property="og:url" content="https://njtools.xyz/tools/image-compressor/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Privacy-First Image Compressor",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "MultimediaApplication",
+                        "featureList": ["Client-side compression", "Web Worker processing", "No upload privacy", "Batch-ready architecture"],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "Compress JPG, PNG, and WebP images directly in your browser using multi-threaded web workers. 100% private and secure."
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-3xl mx-auto space-y-6">

@@ -87,14 +87,82 @@ const SvgConverter: React.FC = () => {
                             Unlike traditional online converters, NJTools uses client-side processing. Your design data remains on your local machine throughout the entire process.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10 text-sm">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Advanced Vector Rasterization Logic</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">High-Density Scaling</h4>
+                                <p className="leading-relaxed">
+                                    Most online converters produce blurry PNGs by rendering at 1:1 scale. NJTools implements a <strong className="text-slate-900 dark:text-white">200% oversampling method</strong> via the Canvas API. By doubling the viewport dimensions before rasterization, we preserve the mathematical precision of your vector paths.
+                                </p>
+                            </div>
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">Asynchronous Data Handling</h4>
+                                <p className="leading-relaxed">
+                                    Our conversion pipeline utilizes <strong className="text-slate-900 dark:text-white">Blob-to-URL mapping</strong>. This avoids memory leaks and ensure that even complex SVG files with heavy path data are processed without blocking the main UI thread.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-blue-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase underline decoration-blue-400">Architectural insight</h3>
+                            <p className="text-sm text-blue-100 leading-relaxed max-w-2xl font-medium">
+                                "By leveraging the browser-native <strong className="text-white">XMLSerializer and CanvasRenderingContext2D</strong>, NJTools isolates the conversion process within the client's local sandbox. This architecture guarantees that sensitive design data is never exposed to external network vulnerabilities."
+                            </p>
+                        </div>
+                    </div>
                 </div>
             }
         >
             <Helmet>
-                <title>Free SVG to PNG Converter | High Quality | NJTools</title>
-                <meta name="description" content="Convert SVG to PNG online for free. Fast, secure, and high-quality SVG vector to PNG image conversion directly in your browser." />
-                <meta name="keywords" content="svg to png, convert svg, vector to image, free online tools, njtools, Free SVG to PNG Converter, High Quality" />
-                <link rel="canonical" href="https://njtools.xyz/tools/svg-to-png" />
+                <title>Free SVG to PNG Converter | High-Res Rasterization | NJTools</title>
+                <meta name="description" content="Convert Scalable Vector Graphics (SVG) to high-quality PNG images instantly. 100% private on-device processing with zero server uploads. Powered by NJTools." />
+                <meta name="keywords" content="svg to png converter, convert svg to png high quality, vector to raster, free online svg converter, secure image conversion, njtools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/svg-to-png/" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/svg-to-png/" />
+                <meta property="og:title" content="Pro SVG to PNG Converter | Secure & Fast | NJTools" />
+                <meta property="og:description" content="Transform your vectors into crisp PNG images instantly. No registration, no tracking, just high-performance conversion." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/svg-to-png/" />
+                <meta property="twitter:title" content="High-Resolution SVG to PNG Converter | NJTools" />
+                <meta property="twitter:description" content="Professional-grade SVG rasterization directly in your browser. 100% Private." />
+                <meta property="twitter:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Software Schema */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "High-Res SVG to PNG Converter",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DesignApplication",
+                        "featureList": [
+                            "High-Fidelity Canvas Rendering",
+                            "2x Upscale Support",
+                            "Instant Browser-Native Processing",
+                            "Zero Server Uploads"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="flex flex-col items-center justify-center border-2 border-dashed border-blue-200 dark:border-slate-700 p-10 rounded-lg bg-blue-50/30 dark:bg-slate-800/50">

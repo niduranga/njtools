@@ -53,7 +53,7 @@ const Home: React.FC = () => {
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                         <Link 
-                            to="/tools" 
+                            to="/tools/" 
                             className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-blue-600/20 transition-all flex items-center justify-center gap-2 group"
                         >
                             Explore All Tools <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -136,7 +136,7 @@ const Home: React.FC = () => {
                     {!searchQuery && filteredTools.length > 6 && (
                         <div className="mt-16 text-center">
                             <Link 
-                                to="/tools" 
+                                to="/tools/" 
                                 className="inline-flex items-center gap-3 px-10 py-5 bg-white dark:bg-gray-800 border border-slate-200 dark:border-gray-700 rounded-2xl font-black text-slate-900 dark:text-white shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-800 transition-all group"
                             >
                                 <LayoutGrid size={20} className="text-blue-600" />

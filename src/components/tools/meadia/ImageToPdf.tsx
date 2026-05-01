@@ -79,36 +79,70 @@ const ImageToPdf: React.FC = () => {
             description="Convert multiple JPG, PNG, or WebP images into a single PDF document instantly."
             seoContent={
                 /* Dark Mode Text Fixes */
-                <div className="space-y-6 text-slate-700 dark:text-slate-300">
+                <div className="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
                     <section>
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Professional Image to PDF Converter</h2>
-                        <p className="leading-relaxed">
-                            Need to combine multiple photos into a single, organized document? Our <strong className="text-blue-600 dark:text-blue-400">Image to PDF Converter</strong> allows you to merge JPG, PNG, and WebP files into a clean PDF instantly.
+                        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-blue-600 w-fit pb-1">
+                            Professional Document Synthesis
+                        </h2>
+                        <p className="leading-relaxed text-sm">
+                            Combining high-resolution assets into a portable document format requires precision. Our <strong className="text-blue-600 dark:text-blue-400">Image to PDF Converter</strong> utilizes the <strong className="text-slate-900 dark:text-white">jsPDF engine</strong> to compile JPG, PNG, and WebP files into a unified document. Whether you are preparing a portfolio, a university assignment, or a corporate report, NJTools ensures your images are preserved with high-fidelity encoding.
                         </p>
                     </section>
 
-                    <section>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Advanced Document Features</h3>
-                        <ul className="list-disc ml-6 space-y-1">
-                            <li><strong className="text-slate-900 dark:text-white">Custom Ordering:</strong> Reorder your pages before converting.</li>
-                            <li><strong className="text-slate-900 dark:text-white">100% Client-Side:</strong> Your documents are never uploaded to a server.</li>
-                        </ul>
-                    </section>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Custom Page Sequencing</h3>
+                            <p className="text-xs leading-relaxed">
+                                Take full control of your document's narrative. Our intuitive UI allows you to <strong className="text-slate-900 dark:text-white">dynamically reorder images</strong> using a drag-and-drop-style logic, ensuring your PDF pages appear exactly in the sequence you need.
+                            </p>
+                        </div>
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">In-Browser Compilation</h3>
+                            <p className="text-xs leading-relaxed">
+                                Most PDF converters upload your files to remote servers, risking data leaks. NJTools implements an <strong className="text-slate-900 dark:text-white">Offline-First Document Pipeline</strong>. All conversions happen within your browser's local sandbox, providing 100% security for sensitive documents.
+                            </p>
+                        </div>
+                    </div>
 
-                    <section className="bg-blue-600 dark:bg-blue-900 p-6 rounded-xl shadow-lg border border-blue-500/30">
-                        <h3 className="text-lg font-bold mb-2 text-white italic">Secure Document Workflow</h3>
-                        <p className="text-sm leading-relaxed text-blue-50 opacity-90">
-                            NJTools protects your privacy by design. The generation process runs locally on your computer.
+                    <section className="bg-blue-600 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase">Developer's Engineering Note</h3>
+                        <p className="text-sm text-blue-50 leading-relaxed max-w-2xl">
+                            "We utilize <strong className="text-white font-bold">Canvas API toDataURL</strong> with 80% JPEG compression during the PDF synthesis. This strikes a perfect balance between visual clarity and a reduced file size, ensuring your PDFs remain lightweight for email sharing and web uploads."
                         </p>
                     </section>
                 </div>
             }
         >
             <Helmet>
-                <title>Free Image to PDF Converter | JPG to PDF Online | NJTools</title>
-                <meta name="description" content="Combine multiple images into one PDF document. Secure, private, and 100% browser-based conversion with NJTools." />
-                <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, convert image to pdf, free pdf creator, private converter, NJTools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/image-to-pdf" />
+                <title>Free Image to PDF Converter | Combine Photos into PDF | NJTools</title>
+                <meta name="description" content="Merge multiple JPG, PNG, and WebP images into a single PDF instantly. Fast, secure, and 100% browser-based with NJTools. No registration required." />
+                <meta name="keywords" content="image to pdf, batch jpg to pdf, combine images to pdf, secure pdf converter, university assignment tools, NJTools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/image-to-pdf/" />
+
+                <meta property="og:title" content="Secure Image to PDF Converter | NJTools" />
+                <meta property="og:description" content="Combine your photos into a professional PDF in seconds. All processing is done locally for 100% privacy." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional Image to PDF Converter",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "BusinessApplication",
+                        "featureList": ["Batch Image Conversion", "Custom Page Ordering", "Client-side PDF Generation", "Zero-upload Privacy"],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "Convert multiple images into a single professional PDF document instantly with NJTools. 100% secure and private."
+                    })}
+                </script>
             </Helmet>
 
             <div className="space-y-6">

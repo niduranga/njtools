@@ -53,7 +53,6 @@ const PasswordGenerator: React.FC = () => {
     }, [length, options]);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         generatePassword();
     }, [generatePassword]);
 
@@ -84,13 +83,13 @@ const PasswordGenerator: React.FC = () => {
                     </section>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem]">
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
                             <h3 className="text-xs font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">Entropy Scoring</h3>
                             <p className="text-sm leading-relaxed">
                                 We use <strong className="text-slate-900 dark:text-white">Shannon entropy</strong> calculations to determine the complexity of your generated string. A score above <strong className="text-slate-900 dark:text-white">80 bits</strong> is considered "Fortress Level," making it practically impossible to crack with current computational power.
                             </p>
                         </div>
-                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem]">
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
                             <h3 className="text-xs font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">CSPRNG Implementation</h3>
                             <p className="text-sm leading-relaxed">
                                 Unlike <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs text-blue-600">Math.random()</code>, our generator utilizes system-level hardware noise via <strong className="text-slate-900 dark:text-white">Uint32Array</strong> buffers, ensuring that every character generated is statistically independent and non-deterministic.
@@ -107,6 +106,20 @@ const PasswordGenerator: React.FC = () => {
                             NJTools operates on a <strong className="text-white underline">Strict Local Execution</strong> model. Your passwords are generated in your browser's volatile memory and are never transmitted, stored, or logged on any server. Privacy is not a feature; it's our foundational architecture.
                         </p>
                     </section>
+
+                    <section className="mt-10 border-t border-slate-100 pt-8">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Frequently Asked Questions</h3>
+                        <div className="space-y-6">
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">Is this password generator safe?</h4>
+                                <p className="text-sm">Yes. NJTools uses client-side encryption. Your passwords never leave your browser.</p>
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-slate-800 dark:text-slate-200">What is Password Entropy?</h4>
+                                <p className="text-sm">Entropy measures the unpredictability of a password. Higher entropy (measured in bits) means a stronger password against brute-force attacks.</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             }
         >
@@ -114,13 +127,31 @@ const PasswordGenerator: React.FC = () => {
                 <title>Strong Password Generator | High-Entropy Security Tool | NJTools</title>
                 <meta name="description" content="Generate cryptographically secure passwords with NJTools. Features real-time entropy calculation, CSPRNG randomness, and 100% private local generation." />
                 <meta name="keywords" content="strong password generator, secure password tool, cryptographic entropy calculator, random string generator, NJTools, Niduranga Jayarathna, secure auth tools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/password-generator" />
+                <link rel="canonical" href="https://njtools.xyz/tools/password-generator/" />
 
                 <meta property="og:title" content="Pro Password Generator | Cryptographic Entropy Analysis | NJTools" />
                 <meta property="og:description" content="Generate uncrackable passwords using the Web Crypto API. Real-time strength analysis and zero server exposure." />
-                <meta property="og:url" content="https://njtools.xyz/tools/password-generator" />
+                <meta property="og:url" content="https://njtools.xyz/tools/password-generator/" />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://njtools.xyz/og-image.png" />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Strong Password Generator",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "SecurityApplication",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-4xl mx-auto space-y-8">

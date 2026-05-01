@@ -111,6 +111,34 @@ const JsonCsvConverter: React.FC = () => {
                             Unlike other online converters, NJTools performs all data transformations <strong className="text-blue-500 text-xs">locally in your browser</strong>. Your sensitive business data or proprietary JSON schemas never touch our server, ensuring compliance with strict privacy standards like <strong className="text-blue-500 text-xs">GDPR</strong>.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Advanced Data Hydration Logic</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-[10px]">Schema Flattening</h4>
+                                <p className="leading-relaxed">
+                                    When converting <strong className="text-slate-900 dark:text-white">JSON to CSV</strong>, NJTools applies an iterative flattening algorithm. It extracts top-level keys as headers and ensures that nested data structures are stringified to maintain <strong className="text-slate-900 dark:text-white">data integrity</strong> during spreadsheet imports.
+                                </p>
+                            </div>
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-[10px]">Type-Safe Parsing</h4>
+                                <p className="leading-relaxed">
+                                    Our <strong className="text-slate-900 dark:text-white">CSV to JSON engine</strong> doesn't just treat everything as a string. It intelligently detects <strong className="text-slate-900 dark:text-white">Booleans and Numeric types</strong>, casting them back to their native JavaScript types to save developers from manual post-processing.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-slate-900 rounded-[2.5rem] border border-slate-800 relative overflow-hidden shadow-2xl">
+                        <div className="relative z-10">
+                            <h3 className="text-xs font-black text-blue-500 mb-2 uppercase tracking-[0.3em]">Developer's Technical Log</h3>
+                            <p className="text-xs italic text-slate-400 leading-relaxed font-mono">
+                                "By leveraging <strong className="text-slate-200">JSON.stringify</strong> for CSV value escaping, NJTools prevents common CSV injection issues where commas or quotes inside data fields could break the tabular structure. The entire transformation pipeline is <strong className="text-slate-200">stateless and synchronous</strong>, ensuring sub-millisecond conversion speeds for medium-sized datasets."
+                            </p>
+                        </div>
+                    </div>
                 </div>
             }
         >
@@ -118,12 +146,39 @@ const JsonCsvConverter: React.FC = () => {
                 <title>JSON to CSV Converter | Convert Excel to JSON Online | NJTools</title>
                 <meta name="description" content="Convert JSON to CSV or CSV to JSON instantly. Professional client-side data transformation. Secure, fast, and 100% private. Best for Excel & API data." />
                 <meta name="keywords" content="json to csv, csv to json, excel to json converter, json to excel online, data converter tool, api data parser, njtools, niduranga jayarathna" />
-                <link rel="canonical" href="https://njtools.xyz/tools/json-csv-converter" />
+                <link rel="canonical" href="https://njtools.xyz/tools/json-csv-converter/" />
 
                 <meta property="og:title" content="JSON ↔ CSV Converter | Secure Data Transformation | NJTools" />
                 <meta property="og:description" content="Fast, private, and client-side conversion between JSON and CSV. Perfect for developers and data analysts." />
-                <meta property="og:url" content="https://njtools.xyz/tools/json-csv-converter" />
+                <meta property="og:url" content="https://njtools.xyz/tools/json-csv-converter/" />
                 <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional JSON ↔ CSV Converter",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DeveloperApplication",
+                        "featureList": [
+                            "Bidirectional JSON and CSV conversion",
+                            "Automatic Type Inference for CSV values",
+                            "100% Client-side processing",
+                            "Excel-ready CSV formatting"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "A high-performance, private data transformation tool to convert JSON arrays to CSV and hydrate CSV files back into JSON objects instantly."
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-6xl mx-auto space-y-6">

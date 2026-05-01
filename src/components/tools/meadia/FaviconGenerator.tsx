@@ -120,19 +120,66 @@ const FaviconGenerator: React.FC = () => {
                             Unlike traditional generators that process your branding assets on a remote server, NJTools performs every transformation in your browser's local sandbox. Your source files never touch the internet, providing 100% security for corporate identity projects.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Cross-Platform Icon Standards</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-blue-600 uppercase">iOS & macOS Safari</h4>
+                                <p className="leading-relaxed">
+                                    We generate the <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">apple-touch-icon.png</code> at 180x180 pixels. This is the gold standard for Apple's Retina displays, ensuring your site looks like a native app when bookmarked on an iPhone or iPad.
+                                </p>
+                            </div>
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-blue-600 uppercase">Android & Chrome PWA</h4>
+                                <p className="leading-relaxed">
+                                    By providing 192x192 and 512x512 icons coupled with a <strong className="text-slate-900 dark:text-white">site.webmanifest</strong>, we enable the "Splash Screen" and "Standalone Mode" features for modern Android devices.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Technical Implementation Note for Authority */}
+                    <section className="mt-10 bg-slate-50 dark:bg-slate-900/30 p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800">
+                        <h3 className="text-xs font-black text-slate-400 mb-4 uppercase tracking-[0.3em]">Developer's Technical Log</h3>
+                        <p className="text-xs leading-relaxed italic text-slate-600 dark:text-slate-400">
+                            "NJTools utilizes the <strong className="text-slate-900 dark:text-white">CanvasRenderingContext2D API</strong> for high-quality image resampling. Unlike naive scaling, we ensure the alpha channel is preserved during the transformation to maintain transparency in <code className="px-1 bg-slate-200 dark:bg-slate-700 rounded">.png</code> assets, which is critical for dark-mode tab bars."
+                        </p>
+                    </section>
                 </div>
             }
         >
             <Helmet>
                 <title>Pro Favicon Generator | Create All Sizes in One ZIP | NJTools</title>
                 <meta name="description" content="Generate apple-touch-icon, android-chrome, and standard favicon sizes instantly. Get a complete set with a webmanifest in one ZIP file. Private & secure." />
-                <meta name="keywords" content="favicon generator, apple touch icon generator, android chrome icon, pwa manifest generator, website icon maker, free favicon tool, NJTools" />
-                <link rel="canonical" href="https://njtools.xyz/tools/favicon-generator" />
+                <meta name="keywords" content="favicon bundle generator, pwa icon maker, website manifest generator, 512x512 android icon, apple touch icon 180x180, developer tools, NJTools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/favicon-generator/" />
 
                 <meta property="og:title" content="Pro Favicon Generator | Complete Asset Bundling | NJTools" />
                 <meta property="og:description" content="Generate every favicon size your website needs in one click. 100% private on-device processing." />
-                <meta property="og:url" content="https://njtools.xyz/tools/favicon-generator" />
+                <meta property="og:url" content="https://njtools.xyz/tools/favicon-generator/" />
                 <meta property="og:type" content="website" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Pro Favicon & Manifest Generator",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DeveloperApplication",
+                        "featureList": ["Multi-size Icon Generation", "PWA Manifest Support", "Apple Touch Icon Creation", "Client-side ZIP Bundling"],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "Generate a complete favicon suite including Apple Touch Icons and Android Manifests instantly with on-device processing."
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-4xl mx-auto">

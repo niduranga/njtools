@@ -90,6 +90,37 @@ const JWTDebugger: React.FC = () => {
                             JWTs often contain sensitive identity claims or PII. NJTools performs all transformations in a client-side sandbox. Your production tokens never touch our network—guaranteed security for enterprise development.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10 text-sm">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Advanced JWT Anatomy & Security</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-medium">
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">Cryptographic Integrity</h4>
+                                <p className="leading-relaxed">
+                                    A standard JWT comprises three segments: <strong className="text-slate-900 dark:text-white">Header, Payload, and Signature</strong>. NJTools decodes the first two segments using a non-destructive <strong className="text-blue-600">Base64URL</strong> transformation, allowing you to inspect the token's metadata and identity claims without needing the private key.
+                                </p>
+                            </div>
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-blue-600 uppercase tracking-widest text-xs">Standard Claims Inspection</h4>
+                                <p className="leading-relaxed">
+                                    Our debugger highlights essential Registered Claims such as <code className="text-blue-500">iss</code> (Issuer), <code className="text-blue-500">exp</code> (Expiration), and <code className="text-blue-500">sub</code> (Subject). Verifying these timestamps is critical for troubleshooting <strong className="text-slate-900 dark:text-white">401 Unauthorized</strong> errors in production environments.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-slate-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white border border-slate-800">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase underline decoration-blue-500">Architectural Note</h3>
+                            <p className="text-sm text-slate-300 leading-relaxed max-w-2xl font-medium">
+                                "NJTools implements an <strong className="text-white">Isomorphic Decoding Pipeline</strong>. By handling the padding requirements of standard Base64 and utilizing `decodeURIComponent` on the escaped byte sequence, we ensure that multi-byte UTF-8 characters within the payload are rendered with 100% fidelity."
+                            </p>
+                        </div>
+                        <div className="absolute -top-5 -right-5 opacity-5 rotate-12">
+                            <Code2 size={180} />
+                        </div>
+                    </div>
                 </div>
             }
         >
@@ -97,13 +128,38 @@ const JWTDebugger: React.FC = () => {
                 <title>JWT Debugger | Inspect & Decode JSON Web Tokens Privately | NJTools</title>
                 <meta name="description" content="Decode JWT tokens instantly. Inspect headers, payloads, and claims with 100% private client-side decoding. Supports HS256, RS256 and more." />
                 <meta name="keywords" content="jwt debugger, decode jwt online, json web token inspector, jwt parser, rs256 decoder, hs256 decoder, auth debug tool, NJTools, Niduranga Jayarathna" />
-                <link rel="canonical" href="https://njtools.xyz/tools/jwt-debugger" />
+                <link rel="canonical" href="https://njtools.xyz/tools/jwt-debugger/" />
 
                 <meta property="og:title" content="Pro JWT Debugger | Stateless Token Inspection | NJTools" />
                 <meta property="og:description" content="Securely parse and inspect your JSON Web Tokens locally. Zero server calls, total privacy for your auth data." />
-                <meta property="og:url" content="https://njtools.xyz/tools/jwt-debugger" />
+                <meta property="og:url" content="https://njtools.xyz/tools/jwt-debugger/" />
                 <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://njtools.xyz/og-image.png" />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional JWT Debugger",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DeveloperApplication",
+                        "featureList": [
+                            "Client-side JWT decoding",
+                            "JOSE Header inspection",
+                            "Payload and Claims visualization",
+                            "Zero server-side data exposure"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">

@@ -75,14 +75,85 @@ const QrGenerator: React.FC = () => {
                             Your data remains yours—no redirection, no tracking.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10 text-sm">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Advanced QR Engineering</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-indigo-600 uppercase tracking-widest text-xs">Reed-Solomon Error Correction</h4>
+                                <p className="leading-relaxed">
+                                    NJTools utilizes <strong className="text-slate-900 dark:text-white">Level H (High) error correction</strong> algorithms. This mathematical redundancy allows your QR code to remain functional even if up to 30% of the surface is covered by your custom logo or suffers physical damage.
+                                </p>
+                            </div>
+                            <div className="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
+                                <h4 className="font-bold text-indigo-600 uppercase tracking-widest text-xs">Pixel-Perfect Rasterization</h4>
+                                <p className="leading-relaxed">
+                                    Our export engine transforms vector SVG data into a <strong className="text-slate-900 dark:text-white">500x500 high-density PNG</strong> using the HTML5 Canvas API. This ensures that every data module is sharp and clearly defined, preventing scanning failures on low-end mobile devices.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Pro Engineering Note */}
+                    <div className="mt-10 p-8 bg-indigo-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase">Developer's Privacy Note</h3>
+                            <p className="text-sm text-indigo-100 leading-relaxed max-w-2xl font-medium">
+                                "Unlike commercial QR generators that use tracking redirects (dynamic QRs), NJTools generates <strong className="text-white">Static QR Codes</strong>. Your URL is encoded directly into the pattern. This means your links never expire, and your users' privacy is protected from third-party analytics trackers."
+                            </p>
+                        </div>
+                        <div className="absolute -top-5 -right-5 opacity-10 rotate-12">
+                            <QrCode size={180} />
+                        </div>
+                    </div>
                 </div>
             }
         >
             <Helmet>
-                <title>Free QR Code Generator with Logo | Custom QR Maker | NJTools</title>
-                <meta name="description" content="Generate high-quality QR codes for free. Add your own logo, customize, and download as PNG. No sign-up required." />
-                <meta name="keywords" content="qr code generator, free qr maker, qr code with logo, custom qr code, branded qr code, NJTools, business qr generator" />
-                <link rel="canonical" href="https://njtools.xyz/tools/qr-generator" />
+                <title>Free QR Code Generator with Logo | Custom Branded QR Maker | NJTools</title>
+                <meta name="description" content="Generate professional QR codes with custom logos for free. 100% private on-device generation, high-resolution PNG download, and zero tracking. Powered by NJTools." />
+                <meta name="keywords" content="qr code generator, custom qr maker, branded qr code, qr code with logo, free qr generator online, private qr maker, NJTools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/qr-generator/" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/qr-generator/" />
+                <meta property="og:title" content="Pro QR Code Generator | Logo Integration | NJTools" />
+                <meta property="og:description" content="Create branded QR codes instantly. No server-side storage, your logo stays on your device. High-res 500x500 PNG output." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/qr-generator/" />
+                <meta property="twitter:title" content="Custom Branded QR Maker | NJTools" />
+                <meta property="twitter:description" content="Professional QR codes with logo support. 100% private and secure generation." />
+                <meta property="twitter:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Software Application Schema */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Custom QR Code Generator",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "BusinessApplication",
+                        "featureList": [
+                            "Custom Logo Embedding",
+                            "Level H Error Correction",
+                            "High-Resolution PNG Export",
+                            "On-Device Processing"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

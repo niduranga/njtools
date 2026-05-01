@@ -84,7 +84,7 @@ const ImageResizer: React.FC = () => {
                         </p>
                     </section>
 
-                    <section className="bg-slate-100 dark:bg-slate-900/50 p-6 rounded-[2rem] border border-slate-200 dark:border-slate-800">
+                    <section className="bg-slate-100 dark:bg-slate-900/50 p-6 rounded-4xl border border-slate-200 dark:border-slate-800">
                         <h3 className="text-lg font-black text-slate-900 dark:text-white mb-3 uppercase tracking-widest">Key Capabilities</h3>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <li className="flex items-center gap-2 text-sm font-bold">
@@ -109,19 +109,68 @@ const ImageResizer: React.FC = () => {
                             NJTools processes your data locally within your browser's memory. Once you close the tab, the data is gone forever.
                         </p>
                     </section>
+
+                    <section className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-slate-100 dark:border-slate-800 pt-10">
+                        <div>
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">High-Fidelity Interpolation</h3>
+                            <p className="text-sm leading-relaxed font-medium">
+                                Unlike basic CSS scaling, our tool utilizes the <strong className="text-blue-600">CanvasRenderingContext2D API</strong> with high-quality resampling enabled. This ensures that even when downscaling massive 4K images to thumbnail sizes, pixel aliasing is minimized, preserving the edge-sharpness and color accuracy of your original photography.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Zero-Storage Architecture</h3>
+                            <p className="text-sm leading-relaxed font-medium">
+                                Your images are handled as raw bitstream data in your browser's <strong className="text-slate-900 dark:text-white">temporary heap memory</strong>. We do not use server-side caching or tracking. This makes NJTools the perfect choice for resizing sensitive business assets or personal photos where data sovereignty is paramount.
+                            </p>
+                        </div>
+                    </section>
+
+                    {/* Pro-Tips for Workflow */}
+                    <section className="mt-10 bg-blue-600 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase">Optimization Pro-Tip</h3>
+                            <p className="text-sm text-blue-50 leading-relaxed max-w-2xl font-medium">
+                                "For optimal web performance, resize your images to the exact dimensions they will be displayed at. This reduces the <strong className="text-white font-bold">LCP (Largest Contentful Paint)</strong> score, boosting your site's SEO ranking and reducing mobile data usage for your users."
+                            </p>
+                        </div>
+                        <div className="absolute -top-5 -right-5 opacity-10 rotate-12">
+                            <ImageIcon size={180} />
+                        </div>
+                    </section>
                 </div>
             }
         >
             <Helmet>
-                <title>Free Online Image Resizer | Custom Dimensions | NJTools</title>
-                <meta name="description" content="Resize JPG, PNG, and WebP images online for free. Maintain aspect ratio and get high-quality results instantly. 100% private and on-device." />
-                <meta name="keywords" content="image resizer, resize image online, change image dimensions, photo resizer, free image tool, private image resizer, NJTools, Niduranga Jayarathna" />
-                <link rel="canonical" href="https://njtools.xyz/tools/image-resizer" />
+                <title>High-Quality Image Resizer | Custom Dimensions & Privacy | NJTools</title>
+                <meta name="description" content="Resize images online without losing quality. Support for JPG, PNG, and WebP. 100% private on-device processing. No upload required." />
+                <meta name="keywords" content="image resizer, online image scaler, custom pixel resize, bulk image resizer alternative, lcp optimization tool, web performance tool, NJTools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/image-resizer/" />
 
                 <meta property="og:title" content="Pro Image Resizer | Custom Dimensions & Privacy" />
                 <meta property="og:description" content="Professional-grade image resizing with zero server uploads. High quality, instant results." />
-                <meta property="og:url" content="https://njtools.xyz/tools/image-resizer" />
+                <meta property="og:url" content="https://njtools.xyz/tools/image-resizer/" />
                 <meta property="og:type" content="website" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional Image Resizer",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DesignApplication",
+                        "featureList": ["High-quality scaling", "Aspect ratio locking", "On-device processing", "No-upload privacy"],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        },
+                        "description": "Resize high-resolution images to custom dimensions with precision pixel-mapping and zero privacy risks."
+                    })}
+                </script>
             </Helmet>
 
             <div className="max-w-4xl mx-auto space-y-8">

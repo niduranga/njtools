@@ -19,27 +19,27 @@ export const router = createBrowserRouter([
                 element:<Home/>
             },
             {
-                path: "tools/:toolId",
+                path: "tools/:toolId/",
                 element: <DynamicToolWrapper />,
             },
             {
-                path: "privacy-policy",
+                path: "privacy-policy/",
                 element: <PrivacyPolicy />,
             },
             {
-                path: "terms-of-service",
+                path: "terms-of-service/",
                 element: <TermsOfService />,
             },
             {
-                path: "contact",
+                path: "contact/",
                 element: <ContactUs />,
             },
             {
-                path: "about",
+                path: "about/",
                 element: <AboutUs />,
             },
             {
-                path: "tools",
+                path: "tools/",
                 element: <AllTools />,
             },
         ]

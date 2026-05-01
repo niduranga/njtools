@@ -2,6 +2,7 @@ import React, { useState, type ChangeEvent } from 'react';
 import ImageTracer from 'imagetracerjs';
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
+import {RefreshCw} from "lucide-react";
 
 const PngToSvg: React.FC = () => {
     const [status, setStatus] = useState<'idle' | 'converting' | 'done'>('idle');
@@ -65,14 +66,84 @@ const PngToSvg: React.FC = () => {
                             <strong className="text-purple-700 dark:text-purple-300"> NJTools runs the vectorization engine locally in your browser.</strong> Your original images and the resulting vector data never leave your device, ensuring maximum privacy for your creative projects.
                         </p>
                     </section>
+
+                    <section className="mt-12 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-10">
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Advanced Path Tracing Technology</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-purple-600 uppercase">Sub-Pixel Precision</h4>
+                                <p className="leading-relaxed">
+                                    By utilizing <strong className="text-slate-900 dark:text-white">Coordinate Geometry Interpolation</strong>, NJTools converts pixel clusters into smooth Bezier curves. This ensures that even low-resolution source files are transformed into clean, professional-grade vectors ready for high-end printing or digital design.
+                                </p>
+                            </div>
+                            <div className="space-y-2">
+                                <h4 className="font-bold text-purple-600 uppercase">Multi-Color Quantization</h4>
+                                <p className="leading-relaxed">
+                                    Our engine supports up to <strong className="text-slate-900 dark:text-white">16-color palette tracing</strong>. This allows for the preservation of complex logos and illustrations while keeping the resulting SVG code optimized for web performance and scalability.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="mt-10 p-8 bg-purple-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <div className="relative z-10">
+                            <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase underline decoration-purple-400">Architectural Insight</h3>
+                            <p className="text-sm text-purple-100 leading-relaxed max-w-2xl font-medium">
+                                "We have implemented the <strong className="text-white">ImageTracer logic</strong> within a browser-local environment to eliminate the need for server-side raster-to-vector engines. This avoids the common 'upload-latency' and ensures that your raw creative assets are never exposed to external cloud storage."
+                            </p>
+                        </div>
+                        <div className="absolute -top-5 -right-5 opacity-10 rotate-12">
+                            <RefreshCw size={180} />
+                        </div>
+                    </div>
                 </div>
             }
         >
             <Helmet>
-                <title>Free PNG to SVG Converter | Vectorize Images | NJTools</title>
-                <meta name="description" content="Convert PNG to SVG online for free. Turn your raster images into high-quality vector graphics instantly." />
-                <meta name="keywords" content="png to svg, convert png, vector to image, free online tools, njtools, Free PNG to SVG Converter, High Quality" />
-                <link rel="canonical" href="https://njtools.xyz/tools/png-to-svg" />
+                <title>Free PNG to SVG Converter | High-Quality Image Vectorization | NJTools</title>
+                <meta name="description" content="Turn your PNG and JPG images into scalable vector graphics (SVG) instantly. Professional-grade path tracing with 100% privacy and no server uploads." />
+                <meta name="keywords" content="png to svg converter, image vectorization, raster to vector, convert jpg to svg, free vector tool, scalable graphics, NJTools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/png-to-svg/" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/png-to-svg/" />
+                <meta property="og:title" content="Pro PNG to SVG Converter | Secure Vectorization | NJTools" />
+                <meta property="og:description" content="Convert raster images to clean mathematical paths. High-fidelity vectorization that stays private on your device." />
+                <meta property="og:image" content="https://njtools.xyz/og-png-to-svg.png/" />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/png-to-svg/" />
+                <meta property="twitter:title" content="Vectorize PNG to SVG Instantly | NJTools" />
+                <meta property="twitter:description" content="Professional-grade PNG to SVG conversion with zero server latency. 100% Secure." />
+                <meta property="twitter:image" content="https://njtools.xyz/og-png-to-svg.png/" />
+
+                {/* Software Schema for SEO */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional Image Vectorizer",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "DesignApplication",
+                        "featureList": [
+                            "Advanced Path Tracing",
+                            "Infinite Scalability",
+                            "Browser-Native Processing",
+                            "Privacy-First Architecture"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="flex flex-col items-center justify-center border-2 border-dashed border-purple-200 dark:border-slate-700 p-10 rounded-lg bg-purple-50/30 dark:bg-slate-800/50">

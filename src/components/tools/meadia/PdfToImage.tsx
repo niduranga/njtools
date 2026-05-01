@@ -2,7 +2,7 @@ import React, { useState, type ChangeEvent } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
-import { FileImage, Upload, Download, AlertCircle, FileText } from 'lucide-react';
+import { FileImage, Upload, Download, AlertCircle } from 'lucide-react';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.mjs',
@@ -65,39 +65,88 @@ const PdfToImage: React.FC = () => {
             description="Extract and convert PDF pages into high-quality PNG images instantly."
             seoContent={
                 /* Dark Mode Text Colors Fix */
-                <div className="space-y-6 text-slate-700 dark:text-slate-300">
+                <div className="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
                     <section>
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Professional PDF into PNG Conversion</h2>
-                        <p className="leading-relaxed">
-                            Need to share a specific page from a large PDF document as an image? Our <strong className="text-purple-600 dark:text-purple-400">PDF to Image Converter</strong> allows you to extract every page and transform them into high-quality PNG graphics instantly.
+                        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-purple-600 w-fit pb-1">
+                            High-Fidelity Document Rasterization
+                        </h2>
+                        <p className="leading-relaxed text-sm">
+                            Document sharing often requires specific pages to be sent as static images. Our <strong className="text-purple-600 dark:text-purple-400">PDF to PNG Converter</strong> leverages the <strong className="text-slate-900 dark:text-white">Mozilla pdf.js engine</strong> to rasterize vector-based PDF data into high-definition 300DPI-equivalent PNG files. This ensures that fine typography and detailed diagrams remain perfectly legible across all devices.
                         </p>
                     </section>
 
-                    <section>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Key Highlights</h3>
-                        <ul className="list-disc ml-6 space-y-1">
-                            <li><strong className="text-slate-900 dark:text-white">Lossless Extractions:</strong> High-definition rendering for fine text.</li>
-                            <li><strong className="text-slate-900 dark:text-white">Browser Rendering:</strong> Privacy-first conversion powered by `pdf.js`.</li>
-                        </ul>
-                    </section>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-purple-600 mb-3 tracking-[0.2em]">Vector-to-Raster Precision</h3>
+                            <p className="text-xs leading-relaxed">
+                                By implementing a <strong className="text-slate-900 dark:text-white">2x Viewport Scale</strong>, NJTools generates images with double the standard pixel density. This process effectively preserves sub-pixel anti-aliasing, making the output ideal for professional presentations and archival purposes.
+                            </p>
+                        </div>
+                        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 className="text-[10px] font-black uppercase text-purple-600 mb-3 tracking-[0.2em]">Sandboxed Data Integrity</h3>
+                            <p className="text-xs leading-relaxed">
+                                Security is a core architectural principle at NJTools. Your PDFs are processed in a <strong className="text-slate-900 dark:text-white">client-side sandboxed environment</strong>. No binary data is transmitted to an external server, ensuring complete data sovereignty for sensitive legal or financial documents.
+                            </p>
+                        </div>
+                    </div>
 
-                    <section className="bg-purple-900 dark:bg-purple-950 text-purple-100 p-6 rounded-xl shadow-lg border border-purple-700 dark:border-purple-800">
-                        <h3 className="text-lg font-bold mb-2 text-white italic flex items-center gap-2">
-                            <FileText className="w-5 h-5" /> Maximum Data Privacy
-                        </h3>
-                        <p className="text-sm leading-relaxed opacity-90">
-                            NJTools values your privacy. Your PDF data is read directly from your local file system.
-                            Your documents stay exactly where they belong: on your computer.
+                    <section className="bg-purple-900 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white">
+                        <h3 className="text-lg font-black mb-2 italic tracking-tight uppercase">Engineering Focus: Asynchronous Rendering</h3>
+                        <p className="text-sm text-purple-100 leading-relaxed max-w-2xl font-medium">
+                            "Our converter utilizes the <strong className="text-white font-bold">Canvas API and Asynchronous Promises</strong> to render pages sequentially. This prevents browser thread-locking, allowing you to process multi-page documents smoothly while maintaining an interactive UI."
                         </p>
+                        <div className="absolute -top-5 -right-5 opacity-10 rotate-12">
+                            <FileImage size={180} />
+                        </div>
                     </section>
                 </div>
             }
         >
             <Helmet>
                 <title>Free PDF to Image Converter | Export PDF to PNG | NJTools</title>
-                <meta name="description" content="Convert PDF documents to PNG images for free. Fast, secure, and private browser-based conversion." />
-                <meta name="keywords" content="pdf to image, pdf to png, njtools, free pdf tools, private conversion" />
-                <link rel="canonical" href="https://njtools.xyz/tools/pdf-to-image" />
+                <meta name="description" content="Convert PDF documents to high-quality PNG images instantly. 100% private and secure browser-based conversion with zero data tracking. Powered by NJTools." />
+                <meta name="keywords" content="pdf to image, pdf to png, export pdf pages, high quality pdf to image, private pdf converter, njtools, Niduranga Jayarathna" />
+                <link rel="canonical" href="https://njtools.xyz/tools/pdf-to-image/" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://njtools.xyz/tools/pdf-to-image/" />
+                <meta property="og:title" content="Pro PDF to Image Converter | Secure & Private | NJTools" />
+                <meta property="og:description" content="Extract and convert PDF pages into high-definition PNG images instantly. 100% on-device processing for maximum privacy." />
+                <meta property="og:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://njtools.xyz/tools/pdf-to-image/" />
+                <meta property="twitter:title" content="Pro PDF to Image Converter | NJTools" />
+                <meta property="twitter:description" content="Convert PDF documents to high-quality PNG images instantly. No server uploads, 100% secure." />
+                <meta property="twitter:image" content="https://njtools.xyz/og-image.png/" />
+
+                {/* Structured Data for SEO */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Professional PDF to Image Converter",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "UtilitiesApplication",
+                        "featureList": [
+                            "High-definition PNG export",
+                            "Multi-page extraction",
+                            "Client-side rendering",
+                            "Privacy-first architecture"
+                        ],
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Niduranga Jayarathna"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             {/* Upload Area with Dark Mode Support */}
