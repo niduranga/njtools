@@ -184,26 +184,35 @@ Object.entries(allPaths).forEach(([p, config]) => {
     console.log(`✅ Generated: /${p}/`);
 });
 
-// 4. Generate Sitemap
+// 4. Generate Sitemap (pretty-printed for Google compatibility)
 const today = new Date().toISOString().split('T')[0];
+
+const buildUrlEntry = (loc, changefreq, priority) => `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+
+const urlEntries = [
+    buildUrlEntry(`${baseUrl}/`, 'daily', '1.0'),
+    ...Object.values(allPaths).map(config =>
+        buildUrlEntry(
+            config.url,
+            config.url.includes('/tools/') ? 'monthly' : 'weekly',
+            config.url.includes('/tools/') ? '0.8' : '0.6'
+        )
+    )
+];
+
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>${baseUrl}/</loc>
-        <lastmod>${today}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-${Object.values(allPaths).map(config => `    <url>
-        <loc>${config.url}</loc>
-        <lastmod>${today}</lastmod>
-        <changefreq>${config.url.includes('/tools/') ? 'monthly' : 'weekly'}</changefreq>
-        <priority>${config.url.includes('/tools/') ? '0.8' : '0.6'}</priority>
-    </url>`).join('\n')}
+${urlEntries.join('\n')}
 </urlset>`;
 
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent);
-console.log('✅ Generated sitemap.xml');
+fs.writeFileSync(path.join('public', 'sitemap.xml'), sitemapContent);
+console.log('✅ Generated sitemap.xml in dist and public');
 
 console.log(`\nStatic path generation complete! Total paths: ${Object.keys(allPaths).length + 1}`);
 
