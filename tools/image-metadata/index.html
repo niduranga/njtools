@@ -42,13 +42,15 @@
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
 
-    <script type="module" crossorigin src="/assets/index-XxV2bIMp.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BlkF2W1x.css">
+    <script type="module" crossorigin src="/assets/index-ma8SUS_y.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/chunk-Cn1BcAw8.js">
+    <link rel="modulepreload" crossorigin href="/assets/preload-helper-D4M6sveU.js">
+    <link rel="modulepreload" crossorigin href="/assets/index.esm-VxXcxLjZ.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Cm8Wsyql.css">
   </head>
   <body>
     <div id="root">
-      <div id="seo-content-static" style="display: none;">
-        /* Dark mode support for SEO texts */
+      <div id="seo-content-static" style="display: none;">/* Dark mode support for SEO texts */
                 <div class="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
                     <section>
                         <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-blue-600 w-fit pb-1">
@@ -66,6 +68,35 @@
                                 Analyze the exact <strong class="text-slate-900 dark:text-white">Optic Configuration</strong> of a shot—including F-number, Exposure Time, ISO speed ratings, and specific Lens Model identifiers—to deconstruct professional photography techniques.
                             </p>
                         </div>
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
+                            <h3 class="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">XMP & ICC Profiling</h3>
+                            <p class="text-xs leading-relaxed">
+                                Go beyond basic tags. Inspect <strong class="text-slate-900 dark:text-white">Extensible Metadata Platforms (XMP)</strong> used by Adobe Lightroom and ICC profiles that define color space integrity across different display hardware.
+                            </p>
+                        </div>
+                    </div>
+
+                    <section class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-slate-300 border border-slate-800">
+                        <h3 class="text-lg font-black text-white mb-2 italic tracking-tight uppercase">Privacy-Centric Parsing</h3>
+                        <p class="text-sm leading-relaxed max-w-2xl">
+                            NJTools operates on a <strong class="text-blue-500 font-bold">Local-Only Execution</strong> model. By parsing image buffers directly via the browser's File API, your sensitive geolocation and device identifiers never touch our servers. Audit your privacy without risking a data leak.
+                        </p>
+                    </section>
+
+                    <section class="mt-10 border-t border-slate-100 dark:border-slate-800 pt-8">
+                        <h3 class="text-xl font-black text-slate-900 dark:text-white mb-6 italic uppercase">Technical Reference & FAQ</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">What is the difference between EXIF and Metadata?</h4>
+                                <p class="text-sm">EXIF (Exchangeable Image File Format) is a specific type of metadata standard used by digital cameras. Metadata is the broader term encompassing EXIF, XMP, and IPTC data.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200">Can this tool detect GPS coordinates?</h4>
+                                <p class="text-sm font-bold text-blue-600 dark:text-blue-400">Yes. If the "Location Services" were active during the shot, our parser will extract the Latitude/Longitude tags from the GPS IFD block.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div></div>
                         <div class="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-4xl">
                             <h3 class="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-[0.2em]">XMP & ICC Profiling</h3>
                             <p class="text-xs leading-relaxed">
