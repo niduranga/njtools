@@ -184,31 +184,23 @@ Object.entries(allPaths).forEach(([p, config]) => {
     console.log(`✅ Generated: /${p}/`);
 });
 
-// 4. Generate Sitemap (pretty-printed for Google compatibility)
-const today = new Date().toISOString().split('T')[0];
+// 4. Generate Sitemap (compact, only loc + lastmod — matching Blogspot format)
+const now = new Date();
+const lastmod = now.toISOString().replace(/\.\d{3}Z$/, 'Z');
 
-const buildUrlEntry = (loc, changefreq, priority) => `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`;
+const buildUrlEntry = (loc) =>
+    `<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`;
 
 const urlEntries = [
-    buildUrlEntry(`${baseUrl}/`, 'daily', '1.0'),
-    ...Object.values(allPaths).map(config =>
-        buildUrlEntry(
-            config.url,
-            config.url.includes('/tools/') ? 'monthly' : 'weekly',
-            config.url.includes('/tools/') ? '0.8' : '0.6'
-        )
-    )
+    buildUrlEntry(`${baseUrl}/`),
+    ...Object.values(allPaths).map(config => buildUrlEntry(config.url))
 ];
 
-const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urlEntries.join('\n')}
-</urlset>`;
+// IMPORTANT: No leading newline before <?xml - must be the very first character
+const sitemapContent = '<?xml version="1.0" encoding="UTF-8"?>' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' +
+    urlEntries.join('') +
+    '</urlset>';
 
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent);
 fs.writeFileSync(path.join('public', 'sitemap.xml'), sitemapContent);
