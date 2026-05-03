@@ -104,7 +104,7 @@ const Home: React.FC = () => {
                             {displayTools.map((tool) => (
                                 <Link
                                     key={tool.id}
-                                    to={`/tools/${tool.id}`}
+                                    to={`/tools/${tool.id}/`}
                                     className="group bg-white dark:bg-gray-800 p-8 rounded-3xl border border-slate-200 dark:border-gray-700 shadow-sm hover:shadow-2xl dark:hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-300"
                                 >
                                     <div className="flex items-start justify-between mb-6">

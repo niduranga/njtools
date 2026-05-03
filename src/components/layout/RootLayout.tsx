@@ -37,7 +37,8 @@ const RootLayout = () => {
 
     const isActive = (path: string) => {
         if (path === '/') return location.pathname === '/';
-        return location.pathname.startsWith(path);
+        const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+        return location.pathname.startsWith(normalizedPath);
     };
 
     const linkClasses = (path: string) =>
@@ -68,9 +69,9 @@ const RootLayout = () => {
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-2">
                         <Link to="/" className={linkClasses("/")}>Home</Link>
-                        <Link to="/tools/" className={linkClasses("/tools")}>All Tools</Link>
-                        <Link to="/about/" className={linkClasses("/about")}>About</Link>
-                        <Link to="/contact/" className={linkClasses("/contact")}>Contact</Link>
+                        <Link to="/tools/" className={linkClasses("/tools/")}>All Tools</Link>
+                        <Link to="/about/" className={linkClasses("/about/")}>About</Link>
+                        <Link to="/contact/" className={linkClasses("/contact/")}>Contact</Link>
                         <div className="h-6 w-px bg-slate-200 dark:bg-slate-800 mx-2" />
                         <ThemeToggle />
                     </div>
@@ -91,9 +92,9 @@ const RootLayout = () => {
                 {isMenuOpen && (
                     <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-4 space-y-2 shadow-2xl animate-in slide-in-from-top-4 duration-200">
                         <Link to="/" className={mobileLinkClasses("/")}>Home</Link>
-                        <Link to="/tools/" className={mobileLinkClasses("/tools")}>All Tools</Link>
-                        <Link to="/about/" className={mobileLinkClasses("/about")}>About Us</Link>
-                        <Link to="/contact/" className={mobileLinkClasses("/contact")}>Contact Us</Link>
+                        <Link to="/tools/" className={mobileLinkClasses("/tools/")}>All Tools</Link>
+                        <Link to="/about/" className={mobileLinkClasses("/about/")}>About Us</Link>
+                        <Link to="/contact/" className={mobileLinkClasses("/contact/")}>Contact Us</Link>
                     </div>
                 )}
             </nav>
