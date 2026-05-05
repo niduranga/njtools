@@ -53,7 +53,6 @@
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
         border-width: 0;
-        display: block !important;
       }
       #static-loader {
         display: flex;
@@ -93,12 +92,13 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-      <!-- SEO content is inside root so it is cleared on hydration -->
-      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">
+    </div>
+    
+
+    <!-- SEO content is at the bottom and strictly hidden from users -->
+    <div id="seo-content-static" style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: fixed; bottom: -10000px; left: -10000px;">
             <h1>Terms of Service</h1>
             <p>By using NJTools, you agree to use our utilities for lawful purposes. Our tools are provided as-is without any warranties.</p>
         </div>
-    </div>
-    
   </body>
 </html>

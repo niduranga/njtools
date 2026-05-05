@@ -53,7 +53,6 @@
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
         border-width: 0;
-        display: block !important;
       }
       #static-loader {
         display: flex;
@@ -93,8 +92,11 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-      <!-- SEO content is inside root so it is cleared on hydration -->
-      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">/* Dark Mode Optimization for SEO Content */
+    </div>
+    
+
+    <!-- SEO content is at the bottom and strictly hidden from users -->
+    <div id="seo-content-static" style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: fixed; bottom: -10000px; left: -10000px;">/* Dark Mode Optimization for SEO Content */
                 <div class="space-y-6 text-slate-700 dark:text-slate-300">
                     <section>
                         <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3 italic flex items-center gap-2">
@@ -154,30 +156,5 @@
                         </div>
                     </div>
                 </div></div>
-                            <div class="space-y-2 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
-                                <h4 class="font-bold text-blue-600 uppercase tracking-widest text-xs">Stateless Architecture</h4>
-                                <p class="leading-relaxed">
-                                    Our formatter is architected to be <strong class="text-slate-900 dark:text-white">Stateless and Ephemeral</strong>. Your code is stored only in the browser's volatile memory (RAM) and is never transmitted via HTTP requests. This architecture is critical for developers handling sensitive API responses or production logs.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    
-                    <div class="mt-10 p-8 bg-slate-900 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-white border border-slate-800">
-                        <div class="relative z-10">
-                            <h3 class="text-lg font-black mb-2 italic tracking-tight uppercase underline decoration-blue-500">Developer's Security Log</h3>
-                            <p class="text-sm text-slate-300 leading-relaxed max-w-2xl font-medium">
-                                "By implementing <strong class="text-white font-bold">Client-Side Logic</strong>, we eliminate the 'Middleman' attack vector common in centralized online formatters. Your data never leaves your local environment, making it safe for processing <strong class="text-blue-400">Environment Variables, Auth Tokens, and PII data</strong> during debugging."
-                            </p>
-                        </div>
-                        <div class="absolute -top-5 -right-5 opacity-5 rotate-12">
-                            
-                        </div>
-                    </div>
-                </div>
-      </div>
-    </div>
-    
   </body>
 </html>

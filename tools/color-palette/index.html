@@ -53,7 +53,6 @@
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
         border-width: 0;
-        display: block !important;
       }
       #static-loader {
         display: flex;
@@ -93,8 +92,11 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-      <!-- SEO content is inside root so it is cleared on hydration -->
-      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo"><div class="space-y-8 text-slate-700 dark:text-slate-300 font-medium">
+    </div>
+    
+
+    <!-- SEO content is at the bottom and strictly hidden from users -->
+    <div id="seo-content-static" style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; position: fixed; bottom: -10000px; left: -10000px;"><div class="space-y-8 text-slate-700 dark:text-slate-300 font-medium">
                     <section>
                         <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-3 italic tracking-tight uppercase">Visual DNA Extraction</h2>
                         <p class="leading-relaxed">
@@ -156,57 +158,5 @@
                         </div>
                     </section>
                 </div></div>
-                        <div class="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem] shadow-sm">
-                            <p class="text-[10px] font-black uppercase text-blue-600 mb-2 tracking-[0.2em]">Designer UX</p>
-                            <p class="text-sm font-bold text-slate-900 dark:text-slate-200">One-click copy to clipboard for seamless Figma, Adobe, or CSS workflows.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-[2rem] shadow-sm">
-                            <p class="text-[10px] font-black uppercase text-blue-600 mb-2 tracking-[0.2em]">Absolute Privacy</p>
-                            <p class="text-sm font-bold text-slate-900 dark:text-slate-200">No cloud processing. Your creative assets are never stored or analyzed by us.</p>
-                        </div>
-                    </div>
-
-                    <section class="bg-slate-900 dark:bg-black p-8 rounded-[2.5rem] border border-slate-800 shadow-2xl relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-5">
-                            
-                        </div>
-                        <h3 class="text-lg font-black text-white mb-2 italic tracking-tight">How it works:</h3>
-                        <p class="text-sm text-slate-400 leading-relaxed max-w-2xl">
-                            By leveraging the <strong class="text-blue-500">HTML5 Canvas ImageData API</strong>, we scan image bitstreams in the client-side memory. This allows for rapid color quantization—extracting the most vibrant and representative shades directly from the browser's hardware-accelerated thread.
-                        </p>
-                    </section>
-
-                    <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-slate-100 dark:border-slate-800 pt-10">
-                        <div>
-                            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">The Science of Color Quantization</h3>
-                            <p class="text-sm leading-relaxed">
-                                NJTools doesn't just "pick" colors. Our algorithm performs <strong class="text-blue-600">pixel-stream sampling</strong>, analyzing the frequency and variance of RGB values across the bitstream. By compressing the image data into a controlled canvas buffer, we can identify dominant chromatic clusters, ensuring the palette reflects the true visual essence of your source image.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-black text-slate-900 dark:text-white mb-4 italic uppercase">Workflow Integration</h3>
-                            <p class="text-sm leading-relaxed">
-                                Designed for modern UI/UX workflows. Once the palette is generated, designers can instantly copy <strong class="text-slate-900 dark:text-white">HEX/RGB codes</strong> for use in <strong class="text-blue-600">Figma, Adobe XD, or Tailwind CSS</strong> configurations. The JSON export feature allows developers to integrate these color tokens directly into their codebase without manual entry errors.
-                            </p>
-                        </div>
-                    </section>
-
-                    <section class="mt-10 bg-slate-50 dark:bg-slate-900/30 p-8 rounded-4xl border border-slate-100 dark:border-slate-800">
-                        <h3 class="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tighter italic">Common Questions</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <h4 class="font-bold text-sm text-blue-600 uppercase">Is my image uploaded to a server?</h4>
-                                <p class="text-xs">No. All analysis is performed within your <strong class="text-slate-900 dark:text-white">browser's memory</strong>. Your images never cross the network, making NJTools the most secure way to extract brand colors from private assets.</p>
-                            </div>
-                            <div class="space-y-2">
-                                <h4 class="font-bold text-sm text-blue-600 uppercase">How many colors can I extract?</h4>
-                                <p class="text-xs">The current algorithm extracts the <strong class="text-slate-900 dark:text-white">top 6 dominant colors</strong> to maintain a cohesive and balanced design scheme suitable for modern web applications.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-      </div>
-    </div>
-    
   </body>
 </html>
