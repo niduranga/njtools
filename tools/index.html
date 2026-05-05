@@ -93,9 +93,8 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-    </div>
-    
-    <div id="seo-content-static" class="sr-only-seo">
+      <!-- SEO content is inside root so it is cleared on hydration -->
+      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">
             <h1>All Web Utilities</h1>
             <p>Explore our comprehensive directory of developer and media tools. From AI background removal to JSON formatting, NJTools provides professional-grade utilities that run 100% in your browser.</p>
             <ul>
@@ -104,6 +103,7 @@
                 <li>Utility Tools: Unit Converter, Password Generator.</li>
             </ul>
         </div>
-
+    </div>
+    
   </body>
 </html>

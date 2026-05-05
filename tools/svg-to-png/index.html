@@ -93,9 +93,8 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-    </div>
-    
-    <div id="seo-content-static" class="sr-only-seo"><div class="space-y-6 text-slate-700 dark:text-slate-300">
+      <!-- SEO content is inside root so it is cleared on hydration -->
+      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo"><div class="space-y-6 text-slate-700 dark:text-slate-300">
                     <section>
                         <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">How to Convert SVG to PNG?</h2>
                         <p class="leading-relaxed">
@@ -177,7 +176,8 @@
                         </div>
                     </div>
                 </div>
+      </div>
     </div>
-
+    
   </body>
 </html>

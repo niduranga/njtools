@@ -93,13 +93,13 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-    </div>
-    
-    <div id="seo-content-static" class="sr-only-seo">
+      <!-- SEO content is inside root so it is cleared on hydration -->
+      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">
             <h1>Contact NJTools</h1>
             <p>Get in touch with the NJTools team for feedback, feature requests, or support. We are always looking to improve our tools for the developer community.</p>
             <p>You can reach out to us via LinkedIn or GitHub to report issues or suggest new utilities.</p>
         </div>
-
+    </div>
+    
   </body>
 </html>

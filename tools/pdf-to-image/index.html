@@ -93,9 +93,8 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-    </div>
-    
-    <div id="seo-content-static" class="sr-only-seo">/* Dark Mode Text Colors Fix */
+      <!-- SEO content is inside root so it is cleared on hydration -->
+      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">/* Dark Mode Text Colors Fix */
                 <div class="space-y-10 text-slate-700 dark:text-slate-300 font-medium">
                     <section>
                         <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4 italic tracking-tight uppercase border-b-2 border-purple-600 w-fit pb-1">
@@ -149,7 +148,8 @@
                         </div>
                     </section>
                 </div>
+      </div>
     </div>
-
+    
   </body>
 </html>

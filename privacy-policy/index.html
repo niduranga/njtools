@@ -93,14 +93,14 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-    </div>
-    
-    <div id="seo-content-static" class="sr-only-seo">
+      <!-- SEO content is inside root so it is cleared on hydration -->
+      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">
             <h1>Privacy Policy</h1>
             <p>At NJTools, we take your privacy seriously. Our tools are designed to work entirely within your browser using client-side technologies like JavaScript and WebAssembly.</p>
             <h2>No Data Collection</h2>
             <p>We do not collect, store, or transmit any of the data you process through our tools. All image conversions, code formatting, and utility calculations happen on your local machine.</p>
         </div>
-
+    </div>
+    
   </body>
 </html>

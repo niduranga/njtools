@@ -93,9 +93,8 @@
         <div class="spinner"></div>
         <p style="font-weight: 600; color: #64748b;">Loading NJTools Engine...</p>
       </div>
-    </div>
-    
-    <div id="seo-content-static" class="sr-only-seo">
+      <!-- SEO content is inside root so it is cleared on hydration -->
+      <div id="seo-content-static" style="display: none !important;" class="sr-only-seo">
             <h1>About NJTools</h1>
             <p>NJTools is a suite of high-performance web utilities engineered to help developers and designers work smarter, without compromising privacy.</p>
             <h2>Our Mission</h2>
@@ -106,6 +105,7 @@
                 <li>100% Private: All processing happens on your device.</li>
             </ul>
         </div>
-
+    </div>
+    
   </body>
 </html>
