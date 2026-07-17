@@ -1,16 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const distDir = './dist';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.resolve(__dirname, '..');
+
+const distDir = path.join(projectRoot, 'dist');
 const baseUrl = 'https://njtools.xyz';
 
 // Map of page IDs to their component file paths (relative to root)
 const componentPaths = {
-    'about': './src/pages/AboutUs.tsx',
-    'privacy-policy': './src/pages/PrivacyPolicy.tsx',
-    'terms-of-service': './src/pages/TermsOfService.tsx',
-    'contact': './src/pages/ContactUs.tsx',
-    'tools': './src/pages/AllTools.tsx'
+    'about': path.join(projectRoot, 'src/pages/AboutUs.tsx'),
+    'privacy-policy': path.join(projectRoot, 'src/pages/PrivacyPolicy.tsx'),
+    'terms-of-service': path.join(projectRoot, 'src/pages/TermsOfService.tsx'),
+    'contact': path.join(projectRoot, 'src/pages/ContactUs.tsx'),
+    'tools': path.join(projectRoot, 'src/pages/AllTools.tsx')
 };
 
 const defaultConfig = {
@@ -92,8 +97,9 @@ const basePages = {
 // Function to extract and clean SEO content from a TSX file
 const extractSeoContent = (filePath) => {
     try {
-        if (!fs.existsSync(filePath)) return '';
-        const content = fs.readFileSync(filePath, 'utf-8');
+        const absolutePath = path.resolve(projectRoot, filePath);
+        if (!fs.existsSync(absolutePath)) return '';
+        const content = fs.readFileSync(absolutePath, 'utf-8');
         
         // Improved regex to handle various spacing and newlines
         const seoMatch = content.match(/seoContent=\{([\s\S]*?)\n?\s*\}\s*>/);
@@ -117,7 +123,8 @@ const extractSeoContent = (filePath) => {
 };
 
 // Read tools from config to be dynamic
-const toolsFileContent = fs.readFileSync('./src/config/tools.tsx', 'utf-8');
+const toolsFile = path.join(projectRoot, 'src/config/tools.tsx');
+const toolsFileContent = fs.readFileSync(toolsFile, 'utf-8');
 
 // Capture tool metadata and their component imports
 const toolRegex = /id:\s*['"]([^'"]+)['"],\s*name:\s*['"]([^'"]+)['"],\s*desc:\s*['"]([^'"]+)['"],\s*component:\s*<([^/\s>]+)/g;
@@ -128,7 +135,7 @@ const importRegex = /import\s+([^\s]+)\s+from\s+['"]([^'"]+)['"]/g;
 const componentImportPaths = {};
 let importMatch;
 while ((importMatch = importRegex.exec(toolsFileContent)) !== null) {
-    componentImportPaths[importMatch[1]] = importMatch[2].replace('../', './src/');
+    componentImportPaths[importMatch[1]] = importMatch[2].replace('../', 'src/');
 }
 
 let match;
@@ -157,13 +164,14 @@ if (!fs.existsSync(rootIndexHtmlPath)) {
 const rawTemplate = fs.readFileSync(rootIndexHtmlPath, 'utf-8');
 
 // Function to inject config into template
+// Uses function callbacks in replace() to prevent "$" character expansion bugs
 const injectSEO = (template, config) => {
     return template
-        .replace(/{{TITLE}}/g, config.title || '')
-        .replace(/{{DESCRIPTION}}/g, config.description || '')
-        .replace(/{{KEYWORDS}}/g, config.keywords || '')
-        .replace(/{{URL}}/g, config.url || '')
-        .replace(/{{SEO_CONTENT}}/g, config.seoContent || '');
+        .replace(/{{TITLE}}/g, () => config.title || '')
+        .replace(/{{DESCRIPTION}}/g, () => config.description || '')
+        .replace(/{{KEYWORDS}}/g, () => config.keywords || '')
+        .replace(/{{URL}}/g, () => config.url || '')
+        .replace(/{{SEO_CONTENT}}/g, () => config.seoContent || '');
 };
 
 // 2. Update the main index.html in dist/
@@ -203,7 +211,7 @@ const sitemapContent = '<?xml version="1.0" encoding="UTF-8"?>' +
     '</urlset>';
 
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent);
-fs.writeFileSync(path.join('public', 'sitemap.xml'), sitemapContent);
+fs.writeFileSync(path.join(projectRoot, 'public', 'sitemap.xml'), sitemapContent);
 console.log('✅ Generated sitemap.xml in dist and public');
 
 console.log(`\nStatic path generation complete! Total paths: ${Object.keys(allPaths).length + 1}`);
