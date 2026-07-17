@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { Helmet } from "react-helmet-async";
 import { TOOLS_CONFIG } from '../config/tools';
@@ -9,19 +9,10 @@ const AllTools: React.FC = () => {
     const categoryParam = searchParams.get('category');
     
     const [searchQuery, setSearchQuery] = useState('');
-    const [activeTab, setActiveTab] = useState(categoryParam || 'All');
+    const activeTab = categoryParam || 'All';
     const categories = ['All', 'Media', 'Developer', 'Utility'];
 
-    useEffect(() => {
-        if (categoryParam) {
-            setActiveTab(categoryParam);
-        } else {
-            setActiveTab('All');
-        }
-    }, [categoryParam]);
-
     const handleTabChange = (cat: string) => {
-        setActiveTab(cat);
         const newParams = new URLSearchParams(searchParams);
         if (cat === 'All') {
             newParams.delete('category');
@@ -118,7 +109,7 @@ const AllTools: React.FC = () => {
                                 >
                                     <div className="flex items-start justify-between mb-6">
                                         <div className="p-4 bg-slate-50 dark:bg-blue-500/10 dark:text-blue-500 rounded-2xl group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 transition-colors">
-                                            {React.cloneElement(tool.icon as React.ReactElement, { size: 32 } as any)}
+                                            {React.cloneElement(tool.icon as React.ReactElement, { size: 32 } as Record<string, unknown>)}
                                         </div>
                                         <span className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg">
                                             {tool.category}

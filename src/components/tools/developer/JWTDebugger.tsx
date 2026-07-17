@@ -5,8 +5,8 @@ import { ShieldAlert, Unlock, Clipboard, Check, AlertCircle, Code2 } from 'lucid
 
 const JWTDebugger: React.FC = () => {
     const [token, setToken] = useState('');
-    const [header, setHeader] = useState<any>(null);
-    const [payload, setPayload] = useState<any>(null);
+    const [header, setHeader] = useState<Record<string, unknown> | null>(null);
+    const [payload, setPayload] = useState<Record<string, unknown> | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [copied, setCopied] = useState(false);
 
@@ -33,10 +33,10 @@ const JWTDebugger: React.FC = () => {
 
             setHeader(base64Decode(parts[0]));
             setPayload(base64Decode(parts[1]));
-        } catch (err: any) {
+        } catch (err: unknown) {
             setHeader(null);
             setPayload(null);
-            setError(err.message || "Failed to decode token");
+            setError(err instanceof Error ? err.message : "Failed to decode token");
         }
     };
 
