@@ -43,7 +43,7 @@ const PdfToImage: React.FC = () => {
                             viewport: viewport
                         };
 
-                        // @ts-ignore
+                        // @ts-expect-error pdfjs-dist render context type mismatch
                         await page.render(renderContext).promise;
                         imageUrls.push(canvas.toDataURL('image/png'));
                     }

@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Helmet } from "react-helmet-async";
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { RefreshCw, Clipboard, Check, ShieldAlert, Lock } from 'lucide-react';
 
 const PasswordGenerator: React.FC = () => {
-    const [password, setPassword] = useState('');
     const [length, setLength] = useState(16);
     const [options, setOptions] = useState({
         uppercase: true,
@@ -12,10 +11,13 @@ const PasswordGenerator: React.FC = () => {
         numbers: true,
         symbols: true,
     });
-    const [entropy, setEntropy] = useState(0);
     const [copied, setCopied] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0);
 
-    const generatePassword = useCallback(() => {
+    const { password, entropy } = useMemo(() => {
+        // refreshKey is used to trigger re-generation
+        void refreshKey;
+
         const charset = {
             uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
             lowercase: 'abcdefghijklmnopqrstuvwxyz',
@@ -30,9 +32,7 @@ const PasswordGenerator: React.FC = () => {
         if (options.symbols) availableChars += charset.symbols;
 
         if (!availableChars) {
-            setPassword('');
-            setEntropy(0);
-            return;
+            return { password: '', entropy: 0 };
         }
 
         // Using Crypto API for true randomness (Senior Dev Standard)
@@ -44,17 +44,16 @@ const PasswordGenerator: React.FC = () => {
             generatedPassword += availableChars[array[i] % availableChars.length];
         }
 
-        setPassword(generatedPassword);
-
         // Entropy Calculation: E = log2(R^L) -> L * log2(R)
         const R = availableChars.length;
         const E = length * Math.log2(R);
-        setEntropy(Math.round(E));
-    }, [length, options]);
 
-    useEffect(() => {
-        generatePassword();
-    }, [generatePassword]);
+        return { password: generatedPassword, entropy: Math.round(E) };
+    }, [length, options, refreshKey]);
+
+    const generatePassword = useCallback(() => {
+        setRefreshKey(k => k + 1);
+    }, []);
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(password);

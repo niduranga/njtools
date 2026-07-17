@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ArrowRightLeft, Scale, Ruler, Zap } from 'lucide-react';
 import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
@@ -29,13 +29,11 @@ const UnitConverter: React.FC = () => {
     const [value, setValue] = useState<string>('1');
     const [fromUnit, setFromUnit] = useState<string>('meter');
     const [toUnit, setToUnit] = useState<string>('kilometer');
-    const [result, setResult] = useState<number>(0);
 
-    const convert = useCallback(() => {
+    const result = useMemo(() => {
         const val = parseFloat(value);
         if (isNaN(val)) {
-            setResult(0);
-            return;
+            return 0;
         }
 
         const rates = unitsData[category] as Record<string, number>;
@@ -43,14 +41,10 @@ const UnitConverter: React.FC = () => {
         const toRate = rates[toUnit];
 
         if (fromRate && toRate) {
-            const converted = (val / fromRate) * toRate;
-            setResult(converted);
+            return (val / fromRate) * toRate;
         }
+        return 0;
     }, [value, fromUnit, toUnit, category]);
-
-    useEffect(() => {
-        convert();
-    }, [convert]);
 
     const handleCategoryChange = (cat: CategoryType) => {
         setCategory(cat);

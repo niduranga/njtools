@@ -4,7 +4,7 @@ import ToolLayout from '../../layout/ToolLayout.tsx';
 import { Helmet } from "react-helmet-async";
 
 const ImageMetadata: React.FC = () => {
-    const [metadata, setMetadata] = useState<any>(null);
+    const [metadata, setMetadata] = useState<Record<string, unknown> | null>(null);
     const [status, setStatus] = useState<'idle' | 'processing' | 'done'>('idle');
 
     const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -140,7 +140,7 @@ const ImageMetadata: React.FC = () => {
                             </thead>
                             <tbody className="divide-y divide-gray-100 dark:divide-slate-800">
                             {Object.entries(metadata).length > 0 ? (
-                                Object.entries(metadata).map(([key, value]: [string, any]) => (
+                                Object.entries(metadata).map(([key, value]: [string, unknown]) => (
                                     <tr key={key} className="hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors">
                                         <td className="px-6 py-4 font-mono text-xs text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">
                                             {key}

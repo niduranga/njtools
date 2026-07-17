@@ -9,7 +9,7 @@ const JsonCsvConverter: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [copied, setCopied] = useState(false);
 
-    const jsonToCsv = (jsonArray: any[]) => {
+    const jsonToCsv = (jsonArray: Record<string, unknown>[]) => {
         if (!jsonArray.length) return '';
         const headers = Object.keys(jsonArray[0]);
         const rows = jsonArray.map(obj =>
@@ -24,8 +24,8 @@ const JsonCsvConverter: React.FC = () => {
         const headers = lines[0].split(',').map(h => h.trim());
         return lines.slice(1).map(line => {
             const values = line.split(',');
-            return headers.reduce((obj: any, header, i) => {
-                let val: any = values[i]?.trim();
+            return headers.reduce((obj: Record<string, unknown>, header, i) => {
+                let val: string | number | boolean | undefined = values[i]?.trim();
                 // Basic type casting
                 if (val === 'true') val = true;
                 else if (val === 'false') val = false;
