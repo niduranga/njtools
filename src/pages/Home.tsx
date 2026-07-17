@@ -109,7 +109,7 @@ const Home: React.FC = () => {
                                 >
                                     <div className="flex items-start justify-between mb-6">
                                         <div className="p-4 bg-slate-50 dark:bg-blue-500/10 dark:text-blue-500 rounded-2xl group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 transition-colors">
-                                            {React.cloneElement(tool.icon as React.ReactElement, { size: 32 } as any)}
+                                            {React.cloneElement(tool.icon as React.ReactElement, { size: 32 } as Record<string, unknown>)}
                                         </div>
                                         <span className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-gray-700 px-3 py-1.5 rounded-lg">
                                             {tool.category}

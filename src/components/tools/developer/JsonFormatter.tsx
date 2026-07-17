@@ -15,8 +15,8 @@ const JsonFormatter: React.FC = () => {
             const formatted = JSON.stringify(parsed, null, 4);
             setInput(formatted);
             setError(null);
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err: unknown) {
+            setError(err instanceof Error ? err.message : 'Invalid JSON');
         }
     };
 
@@ -26,8 +26,8 @@ const JsonFormatter: React.FC = () => {
             const parsed = JSON.parse(input);
             setInput(JSON.stringify(parsed));
             setError(null);
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err: unknown) {
+            setError(err instanceof Error ? err.message : 'Invalid JSON');
         }
     };
 
