@@ -29,7 +29,7 @@ const JsonCsvConverter: React.FC = () => {
                 // Basic type casting
                 if (val === 'true') val = true;
                 else if (val === 'false') val = false;
-                else if (!isNaN(val) && val !== '') val = Number(val);
+                else if (!isNaN(val as unknown as number) && val !== '') val = Number(val);
                 obj[header] = val;
                 return obj;
             }, {});

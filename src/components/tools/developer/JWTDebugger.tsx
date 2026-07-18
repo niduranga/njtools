@@ -189,7 +189,7 @@ const JWTDebugger: React.FC = () => {
                     <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm">
                         <div className="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
                             <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Header: Algorithm & Token Type</span>
-                            <button onClick={() => header && copyToClipboard(header)} className="text-slate-400 hover:text-blue-600 transition-colors">
+                            <button onClick={() => header && copyToClipboard(JSON.stringify(header, null, 2))} className="text-slate-400 hover:text-blue-600 transition-colors">
                                 {copied ? <Check size={16} className="text-green-500" /> : <Clipboard size={16} />}
                             </button>
                         </div>
@@ -202,7 +202,7 @@ const JWTDebugger: React.FC = () => {
                     <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm">
                         <div className="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
                             <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Payload: Data / Claims</span>
-                            <button onClick={() => payload && copyToClipboard(payload)} className="text-slate-400 hover:text-blue-600 transition-colors">
+                            <button onClick={() => payload && copyToClipboard(JSON.stringify(payload, null, 2))} className="text-slate-400 hover:text-blue-600 transition-colors">
                                 <Clipboard size={16} />
                             </button>
                         </div>

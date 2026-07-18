@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -39,6 +42,7 @@ jobs:
     name: 🚀 Deploy to GitHub Pages
     needs: quality-check
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - name: ⬇️ Checkout code
