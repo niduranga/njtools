@@ -215,11 +215,15 @@ const LogoGenerator: React.FC = () => {
     const handleImageUpload = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
-        const objectUrl = URL.createObjectURL(file);
-        setCustomImageUrl(objectUrl);
-        setBgRemovedImageUrl(null);
-        setBgRemovalStatus('idle');
-        setSelectedIconId('custom-image');
+        
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setCustomImageUrl(reader.result as string);
+            setBgRemovedImageUrl(null);
+            setBgRemovalStatus('idle');
+            setSelectedIconId('custom-image');
+        };
+        reader.readAsDataURL(file);
     }, []);
 
     // Remove background from uploaded image
@@ -230,9 +234,13 @@ const LogoGenerator: React.FC = () => {
             const response = await fetch(customImageUrl);
             const blob = await response.blob();
             const resultBlob = await removeBackground(blob);
-            const resultUrl = URL.createObjectURL(resultBlob);
-            setBgRemovedImageUrl(resultUrl);
-            setBgRemovalStatus('done');
+            
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setBgRemovedImageUrl(reader.result as string);
+                setBgRemovalStatus('done');
+            };
+            reader.readAsDataURL(resultBlob);
         } catch (err) {
             console.error('Background removal failed:', err);
             setBgRemovalStatus('error');
@@ -423,8 +431,7 @@ const LogoGenerator: React.FC = () => {
         if (!svgRef.current) return;
         const svgString = new XMLSerializer().serializeToString(svgRef.current);
         const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
-        const DOMURL = window.URL || window.webkitURL || window;
-        const blobUrl = DOMURL.createObjectURL(svgBlob);
+        const blobUrl = URL.createObjectURL(svgBlob);
 
         const vb = getViewBox();
         const [, , vbWidth, vbHeight] = vb.split(' ').map(Number);
@@ -467,7 +474,7 @@ const LogoGenerator: React.FC = () => {
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
             }
-            DOMURL.revokeObjectURL(blobUrl);
+            URL.revokeObjectURL(blobUrl);
         };
         image.src = blobUrl;
     };
