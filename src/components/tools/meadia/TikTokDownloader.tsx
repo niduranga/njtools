@@ -148,14 +148,16 @@ const TikTokDownloader: React.FC = () => {
             if (!reader) throw new Error('ReadableStream is not supported');
 
             let loadedBytes = 0;
-            const chunks: Uint8Array[] = [];
+            const chunks: any[] = [];
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
 
-                chunks.push(value);
-                loadedBytes += value.length;
+                if (value) {
+                    chunks.push(value);
+                    loadedBytes += value.length;
+                }
                 
                 const percentage = Math.round((loadedBytes / totalBytes) * 100);
                 setDownloadProgress(prev => ({ ...prev, [key]: percentage }));
