@@ -12,7 +12,8 @@ import {
     Sparkles,
     Zap,
     Lock,
-    Video
+    Video,
+    Briefcase
 } from 'lucide-react';
 import PngToSvg from "../components/tools/meadia/PngToSvg.tsx";
 import JsonFormatter from "../components/tools/developer/JsonFormatter.tsx";
@@ -32,6 +33,7 @@ import JWTDebugger from "../components/tools/developer/JWTDebugger.tsx";
 import JsonCsvConverter from "../components/tools/developer/JsonCsvConverter.tsx";
 import PasswordGenerator from "../components/tools/utility/PasswordGenerator.tsx";
 import TikTokDownloader from "../components/tools/meadia/TikTokDownloader.tsx";
+import BusinessNameGenerator from "../components/tools/utility/BusinessNameGenerator.tsx";
 
 export const TOOLS_CONFIG = [
     {
@@ -185,6 +187,14 @@ export const TOOLS_CONFIG = [
         desc: 'Generate secure passwords with real-time entropy calculation using Web Crypto API.',
         component: <PasswordGenerator />,
         icon: <Lock className="w-6 h-6 " />,
+        category: 'Utility'
+    },
+    {
+        id: 'business-name-generator',
+        name: 'Business Name Generator',
+        desc: 'Generate industry-focused brand names and check .com domain availability.',
+        component: <BusinessNameGenerator />,
+        icon: <Briefcase className="w-6 h-6" />,
         category: 'Utility'
     },
 ];
