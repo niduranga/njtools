@@ -34,6 +34,7 @@ import JsonCsvConverter from "../components/tools/developer/JsonCsvConverter.tsx
 import PasswordGenerator from "../components/tools/utility/PasswordGenerator.tsx";
 import TikTokDownloader from "../components/tools/meadia/TikTokDownloader.tsx";
 import BusinessNameGenerator from "../components/tools/utility/BusinessNameGenerator.tsx";
+import LogoGenerator from "../components/tools/meadia/LogoGenerator.tsx";
 
 export const TOOLS_CONFIG = [
     {
@@ -147,6 +148,14 @@ export const TOOLS_CONFIG = [
         desc: 'Download TikTok videos without watermark for free instantly.',
         component: <TikTokDownloader />,
         icon: <Video className="w-6 h-6" />,
+        category: 'Media'
+    },
+    {
+        id: 'logo-generator',
+        name: 'Professional Logo Generator',
+        desc: 'Design high-resolution vector logos locally and download as SVG or PNG.',
+        component: <LogoGenerator />,
+        icon: <Palette className="w-6 h-6" />,
         category: 'Media'
     },
     {
