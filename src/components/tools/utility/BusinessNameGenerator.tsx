@@ -163,79 +163,88 @@ const generateNames = (
         return getRandomElement(category.roots);
     };
 
-    while (names.size < count) {
+    let attempts = 0;
+    const maxAttempts = 300;
+
+    while (names.size < count && attempts < maxAttempts) {
+        attempts++;
         let name = '';
         const base = getPrimaryWord();
 
-        switch (style) {
-            case 'modern-blend': {
-                const suffix = getRandomElement(category.suffixes);
-                const infixes = ['o', 'i', 'a', 'u', 'e', ''];
-                const infix = seedWord ? '' : getRandomElement(infixes);
-                name = cap(base) + infix + suffix;
-                break;
+        if (attempts > 150) {
+            const fallbackSuffixes = ['io', 'co', 'go', 'now', 'app', 'hq', 'lab', 'hub', 'link', 'space', 'web', 'net'];
+            name = cap(base) + getRandomElement(fallbackSuffixes);
+            if (names.has(name)) {
+                name = cap(base) + getRandomElement(fallbackSuffixes) + Math.floor(Math.random() * 10);
             }
-            case 'compound': {
-                const customCompounds = [
-                    'Forge', 'Grid', 'Pulse', 'Spire', 'Trellis', 'Crest', 'Ridge', 'Beacon', 'Canopy', 'Pinnacle',
-                    'Vortex', 'Helix', 'Horizon', 'Vista', 'Nest', 'Vault', 'Cove', 'Oasis', 'Drift', 'Stride',
-                    'Sentry', 'Hedge', 'Draft', 'Rift', 'Loom', 'Quarry', 'Flint', 'Apex', 'Sienna', 'Bramble'
-                ];
-                const second = getRandomElement(customCompounds.concat(category.suffixes));
-                
-                if (Math.random() > 0.5 && !seedWord) {
-                    name = cap(getRandomElement(category.prefixes)) + cap(second.toLowerCase());
-                } else {
-                    name = cap(base) + cap(second.toLowerCase());
+        } else {
+            switch (style) {
+                case 'modern-blend': {
+                    const suffix = getRandomElement(category.suffixes);
+                    const infixes = ['o', 'i', 'a', 'u', 'e', ''];
+                    const infix = seedWord ? '' : getRandomElement(infixes);
+                    name = cap(base) + infix + suffix;
+                    break;
                 }
-                break;
-            }
-            case 'latinate': {
-                const endings = ['ia', 'ica', 'us', 'ium', 'ex', 'is', 'a', 'ora', 'ara', 'ea', 'entia', 'aris', 'onix', 'isys', 'eos', 'aero', 'ux'];
-                const ending = getRandomElement(endings);
-                let truncated = base;
-                if (/[aeiou]$/.test(truncated)) {
-                    truncated = truncated.slice(0, -1);
+                case 'compound': {
+                    const customCompounds = [
+                        'Forge', 'Grid', 'Pulse', 'Spire', 'Trellis', 'Crest', 'Ridge', 'Beacon', 'Canopy', 'Pinnacle',
+                        'Vortex', 'Helix', 'Horizon', 'Vista', 'Nest', 'Vault', 'Cove', 'Oasis', 'Drift', 'Stride',
+                        'Sentry', 'Hedge', 'Draft', 'Rift', 'Loom', 'Quarry', 'Flint', 'Apex', 'Sienna', 'Bramble'
+                    ];
+                    const second = getRandomElement(customCompounds.concat(category.suffixes));
+                    
+                    if (Math.random() > 0.5 && !seedWord) {
+                        name = cap(getRandomElement(category.prefixes)) + cap(second.toLowerCase());
+                    } else {
+                        name = cap(base) + cap(second.toLowerCase());
+                    }
+                    break;
                 }
-                name = cap(truncated) + ending;
-                break;
-            }
-            case 'alternative': {
-                let altBase = base;
-                altBase = altBase.replace(/c([aeiou])/g, 'k$1');
-                altBase = altBase.replace(/c$/g, 'k');
-                altBase = altBase.replace(/([aeiou])s$/g, '$1z');
-                altBase = altBase.replace(/ph/g, 'f');
-                altBase = altBase.replace(/y/g, 'i');
-                altBase = altBase.replace(/sh/g, 'x');
-                altBase = altBase.replace(/oo/g, 'u');
-                
-                const endings = ['q', 'x', 'z', 'ix', 'ox', 'y', 'r'];
-                name = cap(altBase) + getRandomElement(endings);
-                break;
-            }
-            case 'abstract': {
-                const syllWord = generateSyllableWord();
-                if (seedWord) {
-                    name = cap(seedWord.slice(0, Math.ceil(seedWord.length / 2))) + syllWord.slice(Math.floor(syllWord.length / 3));
-                } else {
-                    name = cap(syllWord);
+                case 'latinate': {
+                    const endings = ['ia', 'ica', 'us', 'ium', 'ex', 'is', 'a', 'ora', 'ara', 'ea', 'entia', 'aris', 'onix', 'isys', 'eos', 'aero', 'ux'];
+                    const ending = getRandomElement(endings);
+                    let truncated = base;
+                    if (/[aeiou]$/.test(truncated)) {
+                        truncated = truncated.slice(0, -1);
+                    }
+                    name = cap(truncated) + ending;
+                    break;
                 }
-                break;
+                case 'alternative': {
+                    let altBase = base;
+                    altBase = altBase.replace(/c([aeiou])/g, 'k$1');
+                    altBase = altBase.replace(/c$/g, 'k');
+                    altBase = altBase.replace(/([aeiou])s$/g, '$1z');
+                    altBase = altBase.replace(/ph/g, 'f');
+                    altBase = altBase.replace(/y/g, 'i');
+                    altBase = altBase.replace(/sh/g, 'x');
+                    altBase = altBase.replace(/oo/g, 'u');
+                    
+                    const endings = ['q', 'x', 'z', 'ix', 'ox', 'y', 'r'];
+                    name = cap(altBase) + getRandomElement(endings);
+                    break;
+                }
+                case 'abstract': {
+                    const syllWord = generateSyllableWord();
+                    if (seedWord) {
+                        name = cap(seedWord.slice(0, Math.ceil(seedWord.length / 2))) + syllWord.slice(Math.floor(syllWord.length / 3));
+                    } else {
+                        name = cap(syllWord);
+                    }
+                    break;
+                }
+                default:
+                    name = cap(base);
             }
-            default:
-                name = cap(base);
         }
 
         name = name.replace(/([a-zA-Z])\1{2,}/g, '$1$1');
         name = name.replace(/([aeiou])\1/gi, '$1');
         
-        if (name.length >= 5 && name.length <= 15) {
+        const minLength = seedWord && seedWord.length < 4 ? 3 : 5;
+        if (name.length >= minLength && name.length <= 15) {
             names.add(name);
-        }
-
-        if (names.size < count && Math.random() > 0.999) {
-            names.add(cap(base) + getRandomElement(['io', 'hq', 'co', 'go', 'now', 'app']));
         }
     }
 
@@ -324,6 +333,13 @@ const BusinessNameGenerator: React.FC = () => {
         if (!filterOnlyAvailable) return generatedNames;
         return generatedNames.filter(name => domainStatuses[name] === 'available');
     }, [generatedNames, domainStatuses, filterOnlyAvailable]);
+
+    const isCheckingActive = useMemo(() => {
+        return generatedNames.some(name => {
+            const status = domainStatuses[name];
+            return !status || status === 'idle' || status === 'checking';
+        });
+    }, [generatedNames, domainStatuses]);
 
     return (
         <ToolLayout
@@ -607,19 +623,29 @@ const BusinessNameGenerator: React.FC = () => {
                     </div>
                 ) : (
                     generatedNames.length > 0 && (
-                        <div className="bg-slate-50 dark:bg-slate-900/20 border border-slate-100 dark:border-slate-800 p-8 text-center rounded-[2rem] space-y-3">
-                            <AlertTriangle className="w-8 h-8 text-amber-500 mx-auto" />
-                            <h4 className="font-bold text-slate-900 dark:text-white">No available .com domains found in this batch.</h4>
-                            <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                                All generated names are registered. Try changing your style, categories, or keywords, and generate again!
-                            </p>
-                            <button
-                                onClick={handleGenerate}
-                                className="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition"
-                            >
-                                Generate New Batch
-                            </button>
-                        </div>
+                        isCheckingActive ? (
+                            <div className="bg-slate-50 dark:bg-slate-900/20 border border-slate-100 dark:border-slate-800 p-8 text-center rounded-[2rem] space-y-3">
+                                <Loader2 className="w-8 h-8 text-indigo-500 animate-spin mx-auto" />
+                                <h4 className="font-bold text-slate-900 dark:text-white">Checking domain availability...</h4>
+                                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                                    Verifying .com domain registrations sequentially on the registry database. Please wait...
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="bg-slate-50 dark:bg-slate-900/20 border border-slate-100 dark:border-slate-800 p-8 text-center rounded-[2rem] space-y-3">
+                                <AlertTriangle className="w-8 h-8 text-amber-500 mx-auto" />
+                                <h4 className="font-bold text-slate-900 dark:text-white">No available .com domains found in this batch.</h4>
+                                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                                    All generated names are registered. Try changing your style, categories, or keywords, and generate again!
+                                </p>
+                                <button
+                                    onClick={handleGenerate}
+                                    className="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition"
+                                >
+                                    Generate New Batch
+                                </button>
+                            </div>
+                        )
                     )
                 )}
 
