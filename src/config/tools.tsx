@@ -11,7 +11,8 @@ import {
     Ruler, ShieldCheck,
     Sparkles,
     Zap,
-    Lock
+    Lock,
+    Video
 } from 'lucide-react';
 import PngToSvg from "../components/tools/meadia/PngToSvg.tsx";
 import JsonFormatter from "../components/tools/developer/JsonFormatter.tsx";
@@ -30,6 +31,7 @@ import SafeAreaChecker from "../components/tools/meadia/SafeAreaChecker.tsx";
 import JWTDebugger from "../components/tools/developer/JWTDebugger.tsx";
 import JsonCsvConverter from "../components/tools/developer/JsonCsvConverter.tsx";
 import PasswordGenerator from "../components/tools/utility/PasswordGenerator.tsx";
+import TikTokDownloader from "../components/tools/meadia/TikTokDownloader.tsx";
 
 export const TOOLS_CONFIG = [
     {
@@ -135,6 +137,14 @@ export const TOOLS_CONFIG = [
         desc: 'Verify if your social media covers are obscured by profile pictures or UI elements.',
         component: <SafeAreaChecker />,
         icon: <ShieldCheck className="w-6 h-6" />,
+        category: 'Media'
+    },
+    {
+        id: 'tiktok-downloader',
+        name: 'TikTok Video Downloader',
+        desc: 'Download TikTok videos without watermark for free instantly.',
+        component: <TikTokDownloader />,
+        icon: <Video className="w-6 h-6" />,
         category: 'Media'
     },
     {
