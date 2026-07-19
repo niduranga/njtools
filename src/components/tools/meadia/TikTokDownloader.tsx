@@ -133,6 +133,19 @@ const validateAndNormalizeResponse = (data: unknown): TikTokVideoData | null => 
     };
 };
 
+const isValidTikTokUrl = (urlStr: string): boolean => {
+    try {
+        const parsed = new URL(urlStr.trim());
+        if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+            return false;
+        }
+        const hostname = parsed.hostname.toLowerCase();
+        return hostname === 'tiktok.com' || hostname.endsWith('.tiktok.com');
+    } catch {
+        return false;
+    }
+};
+
 const TikTokDownloader: React.FC = () => {
     const [url, setUrl] = useState('');
     const [loading, setLoading] = useState(false);
@@ -145,11 +158,12 @@ const TikTokDownloader: React.FC = () => {
     const handlePaste = async () => {
         try {
             const text = await navigator.clipboard.readText();
-            if (text.includes('tiktok.com')) {
-                setUrl(text);
+            const cleanText = text.trim();
+            if (isValidTikTokUrl(cleanText)) {
+                setUrl(cleanText);
                 setError(null);
             } else {
-                setError('Clipboard content does not look like a TikTok URL.');
+                setError('Clipboard content does not look like a valid TikTok URL.');
             }
         } catch {
             setError('Clipboard permission denied or unsupported. Please paste manually.');
@@ -163,7 +177,7 @@ const TikTokDownloader: React.FC = () => {
         }
 
         const cleanUrl = targetUrl.trim();
-        if (!cleanUrl.includes('tiktok.com')) {
+        if (!isValidTikTokUrl(cleanUrl)) {
             setError('Invalid URL. Please enter a valid TikTok link.');
             return;
         }
@@ -233,10 +247,11 @@ const TikTokDownloader: React.FC = () => {
             if (!response.ok) throw new Error('Network response was not ok');
 
             const contentLength = response.headers.get('content-length');
-            const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
+            const parsedLength = contentLength ? parseInt(contentLength, 10) : 0;
+            const totalBytes = Number.isFinite(parsedLength) && parsedLength > 0 ? parsedLength : 0;
 
             if (totalBytes === 0) {
-                // Fallback direct download if length is missing
+                // Fallback direct download if length is missing or malformed
                 const blob = await response.blob();
                 triggerDownload(blob, filename);
                 return;
