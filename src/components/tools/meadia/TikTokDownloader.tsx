@@ -53,6 +53,86 @@ interface TikTokVideoData {
     author: TikTokAuthor;
 }
 
+interface RawTikTokAuthor {
+    id?: unknown;
+    unique_id?: unknown;
+    nickname?: unknown;
+    avatar?: unknown;
+}
+
+interface RawTikTokMusicInfo {
+    id?: unknown;
+    title?: unknown;
+    play?: unknown;
+    cover?: unknown;
+    author?: unknown;
+    duration?: unknown;
+}
+
+interface RawTikTokVideoData {
+    id?: unknown;
+    title?: unknown;
+    cover?: unknown;
+    play?: unknown;
+    wmplay?: unknown;
+    size?: unknown;
+    wm_size?: unknown;
+    music?: unknown;
+    music_info?: RawTikTokMusicInfo;
+    play_count?: unknown;
+    digg_count?: unknown;
+    comment_count?: unknown;
+    share_count?: unknown;
+    download_count?: unknown;
+    author?: RawTikTokAuthor;
+}
+
+const validateAndNormalizeResponse = (data: unknown): TikTokVideoData | null => {
+    if (!data || typeof data !== 'object') return null;
+
+    const raw = data as RawTikTokVideoData;
+
+    // Required fields check
+    if (typeof raw.id !== 'string' || !raw.id) return null;
+    if (typeof raw.play !== 'string' || !raw.play) return null;
+
+    // Safe normalization of author details
+    const author: TikTokAuthor = {
+        id: typeof raw.author?.id === 'string' ? raw.author.id : '',
+        unique_id: typeof raw.author?.unique_id === 'string' ? raw.author.unique_id : 'unknown',
+        nickname: typeof raw.author?.nickname === 'string' ? raw.author.nickname : 'TikTok Creator',
+        avatar: typeof raw.author?.avatar === 'string' ? raw.author.avatar : ''
+    };
+
+    // Safe normalization of music info
+    const music_info: TikTokMusicInfo = {
+        id: typeof raw.music_info?.id === 'string' ? raw.music_info.id : '',
+        title: typeof raw.music_info?.title === 'string' ? raw.music_info.title : 'Original Sound',
+        play: typeof raw.music_info?.play === 'string' ? raw.music_info.play : '',
+        cover: typeof raw.music_info?.cover === 'string' ? raw.music_info.cover : '',
+        author: typeof raw.music_info?.author === 'string' ? raw.music_info.author : '',
+        duration: typeof raw.music_info?.duration === 'number' ? raw.music_info.duration : 0
+    };
+
+    return {
+        id: raw.id,
+        title: typeof raw.title === 'string' ? raw.title : '',
+        cover: typeof raw.cover === 'string' ? raw.cover : '',
+        play: raw.play,
+        wmplay: typeof raw.wmplay === 'string' ? raw.wmplay : raw.play,
+        size: typeof raw.size === 'number' ? raw.size : undefined,
+        wm_size: typeof raw.wm_size === 'number' ? raw.wm_size : undefined,
+        music: typeof raw.music === 'string' ? raw.music : '',
+        music_info,
+        play_count: typeof raw.play_count === 'number' ? raw.play_count : 0,
+        digg_count: typeof raw.digg_count === 'number' ? raw.digg_count : 0,
+        comment_count: typeof raw.comment_count === 'number' ? raw.comment_count : 0,
+        share_count: typeof raw.share_count === 'number' ? raw.share_count : 0,
+        download_count: typeof raw.download_count === 'number' ? raw.download_count : 0,
+        author
+    };
+};
+
 const TikTokDownloader: React.FC = () => {
     const [url, setUrl] = useState('');
     const [loading, setLoading] = useState(false);
@@ -113,7 +193,12 @@ const TikTokDownloader: React.FC = () => {
             const resJson = await response.json();
             
             if (resJson.code === 0 && resJson.data) {
-                setVideoData(resJson.data);
+                const validatedData = validateAndNormalizeResponse(resJson.data);
+                if (validatedData) {
+                    setVideoData(validatedData);
+                } else {
+                    setError('API returned an invalid or malformed response structure.');
+                }
             } else {
                 setError(resJson.msg || 'Failed to fetch video data. Please verify the URL.');
             }
@@ -127,6 +212,19 @@ const TikTokDownloader: React.FC = () => {
 
     const handleDownload = async (mediaUrl: string, filename: string, key: string) => {
         if (downloadingKey) return;
+
+        // Security check: Validate URL protocol
+        try {
+            const parsedUrl = new URL(mediaUrl);
+            if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+                setError('Download blocked: Unsupported URL protocol.');
+                return;
+            }
+        } catch {
+            setError('Download blocked: Malformed URL.');
+            return;
+        }
+
         setDownloadingKey(key);
         setDownloadProgress(prev => ({ ...prev, [key]: 0 }));
 
@@ -148,14 +246,14 @@ const TikTokDownloader: React.FC = () => {
             if (!reader) throw new Error('ReadableStream is not supported');
 
             let loadedBytes = 0;
-            const chunks: any[] = [];
+            const chunks: BlobPart[] = [];
 
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
 
                 if (value) {
-                    chunks.push(value);
+                    chunks.push(value as unknown as BlobPart);
                     loadedBytes += value.length;
                 }
                 
@@ -167,9 +265,21 @@ const TikTokDownloader: React.FC = () => {
             triggerDownload(blob, filename);
         } catch (err) {
             console.error('Download error:', err);
-            // Fallback: Open file in a new tab if CORS or other issues hit
-            setError('Direct download blocked or failed. Opening the media URL in a new tab...');
-            window.open(mediaUrl, '_blank');
+            // Security check: Validate URL protocol before opening window fallback
+            try {
+                const parsedUrl = new URL(mediaUrl);
+                if (parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:') {
+                    setError('Direct download blocked or failed. Opening the media URL securely in a new tab...');
+                    const fallbackWindow = window.open(mediaUrl, '_blank', 'noopener,noreferrer');
+                    if (fallbackWindow) {
+                        fallbackWindow.opener = null;
+                    }
+                } else {
+                    setError('Fallback download blocked: Unsupported URL protocol.');
+                }
+            } catch {
+                setError('Fallback download blocked: Malformed URL.');
+            }
         } finally {
             setDownloadingKey(null);
         }
